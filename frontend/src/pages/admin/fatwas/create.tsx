@@ -2,13 +2,13 @@ import React, { useRef, useState } from "react";
 import axiosInstance from "@/lib/axios";
 import { useRouter } from "next/router";
 import { Audio } from "@/lib/definitions";
-import FormProvider from "@/components/hook-form/FormProvider";
+import FormProvider from "@/components/FormProvider";
 import { useForm } from "react-hook-form";
 import AdminLayout from "@/components/admin-layout";
 import Link from "next/link";
 
 import AudioUpload from "@/components/audio-upload";
-import RHFTextAreaField from "@/components/hook-form/RHFTextAreaField";
+import RHFTextAreaField from "@/components/RHFTextAreaField";
 
 import ExclamationTriangleIcon from "@/icons/exclamation-triangle";
 import { Button } from "@/components/ui/button";

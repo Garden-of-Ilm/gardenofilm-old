@@ -57,6 +57,15 @@ export function formatAdditionalReferences(reference?: string) {
   return formattedHTML;
 }
 
+export function convertGoogleDriveLinkToDownloadLink(link: string): string {
+  const regex = /\/d\/([^/]+)\/view/;
+  const match = link.match(regex);
+  if (match && match[1]) {
+    return `https://drive.google.com/uc?export=download&id=${match[1]}`;
+  }
+  return "";
+}
+
 export function convertDropboxLinkToAudioSrcLink(link: string) {
   return link.replace("&dl=0", "").replace("www.", "dl.");
 }
@@ -75,13 +84,4 @@ export function isTokenExpired(token?: string) {
   );
   const { exp } = JSON.parse(jsonPayload);
   return Date.now() >= exp * 1000;
-}
-
-export function extractIdFromUrl(url: string): string | null {
-  const regex = /\/d\/([^/]+)\/view/;
-  const match = url.match(regex);
-  if (match && match[1]) {
-    return match[1];
-  }
-  return null;
 }

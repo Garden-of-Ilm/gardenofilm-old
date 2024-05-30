@@ -14,6 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Navbar from "@/components/navbar";
+import { convertGoogleDriveLinkToDownloadLink } from "@/lib/utils";
 
 export default function Page() {
   const { isPending, error, data } = useQuery({
@@ -69,7 +70,9 @@ export default function Page() {
                         <TableCell>{r.name}</TableCell>
                         <TableCell className="text-right">
                           <a
-                            href={r.downloadUrl}
+                            href={convertGoogleDriveLinkToDownloadLink(
+                              r.downloadUrl,
+                            )}
                             className="cursor-pointer text-blue-500 underline hover:text-blue-400"
                           >
                             Download

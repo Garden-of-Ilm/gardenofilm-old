@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import ChevronLeftIcon from "@/icons/chevron-left";
-import { extractIdFromUrl } from "@/lib/utils";
 
 export default function Page() {
   const router = useRouter();
@@ -19,14 +18,6 @@ export default function Page() {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-
-    const id = extractIdFromUrl((formData as any).get("url"));
-    if (!id) {
-      setError("Error: invalid link");
-      return;
-    }
-    const downloadUrl = "https://drive.google.com/uc?export=download&id=" + id;
-    formData.set("downloadUrl", downloadUrl);
 
     axiosInstance
       .post("/resources", formData, {
@@ -67,12 +58,12 @@ export default function Page() {
             />
           </div>
           <div className="mt-6 grid w-full max-w-md items-center gap-1.5">
-            <Label htmlFor="url">Google Drive Link</Label>
+            <Label htmlFor="downloadUrl">Google Drive Link</Label>
             <Input
               type="text"
               className="border-slate-400"
-              id="url"
-              name="url"
+              id="downloadUrl"
+              name="downloadUrl"
             />
           </div>
           <details className="mt-4 max-w-md rounded border border-slate-300 px-3 py-2 text-sm text-slate-500">

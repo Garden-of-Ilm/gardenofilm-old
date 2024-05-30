@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import PlusIcon from "@/icons/plus";
 import axiosInstance, { baseURL } from "@/lib/axios";
 import { Resource } from "@/lib/definitions";
-import { formatDate } from "@/lib/utils";
+import { convertGoogleDriveLinkToDownloadLink, formatDate } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -87,7 +87,7 @@ export default function Page() {
                   </TableCell>
                   <TableCell className="py-1">
                     <a
-                      href={r.downloadUrl}
+                      href={convertGoogleDriveLinkToDownloadLink(r.downloadUrl)}
                       className="cursor-pointer text-blue-500 underline hover:text-blue-400"
                     >
                       Download
