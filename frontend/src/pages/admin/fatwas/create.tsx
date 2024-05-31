@@ -103,7 +103,7 @@ export default function FatwaCreate() {
           <RHFTextAreaField
             name="reply"
             className={
-              "mt-4 block w-full resize-none rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              "mt-4 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
             }
             placeholder="Reply"
           />
@@ -111,7 +111,7 @@ export default function FatwaCreate() {
           <RHFTextAreaField
             name="category"
             className={
-              "mt-4 block w-full resize-none rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              "mt-4 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
             }
             placeholder="Category"
           />
@@ -119,7 +119,7 @@ export default function FatwaCreate() {
           <RHFTextAreaField
             name="additionalReferences"
             className={
-              "mt-4 block w-full resize-none rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              "mt-4 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
             }
             placeholder="Additional References"
           />

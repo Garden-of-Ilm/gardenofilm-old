@@ -4,6 +4,7 @@ import axiosInstance from "@/lib/axios";
 import { useFormContext } from "react-hook-form";
 import { Audio } from "@/lib/definitions";
 import ArrowUpTrayIcon from "@/icons/arrow-up-tray";
+import { Button } from "./ui/button";
 
 interface Props {
   audios: Audio[] | [];
@@ -95,21 +96,17 @@ function AudioUpload({ audios }: Props) {
         onChange={handleChange}
         className="hidden"
       />
-      <h4 className="text-center text-2xl font-medium text-[#4e3e2f]">
-        Choose an audio
-      </h4>
+      <h4 className="text-center text-2xl font-medium">Choose an audio</h4>
       <p className="mt-[15px] text-[20px] text-[#a9acb4]">
         Audio should be related to the fatwa only
       </p>
 
-      <button
-        type="button"
+      <Button
+        className="text-md mt-8 h-12 rounded-lg"
         onClick={() => fileRef?.current?.click()}
-        className="mt-[32px] flex items-center gap-[10px] rounded-[12px] bg-[#3d3733] px-[24px] py-[16px] text-white hover:opacity-90"
       >
-        <ArrowUpTrayIcon className="h-5 w-5" />
-        <span>Upload file</span>
-      </button>
+        <ArrowUpTrayIcon className="mr-2 h-5 w-5" /> Upload file
+      </Button>
 
       {Object.keys(files).map((key, index) => (
         <AudioCard

@@ -128,7 +128,7 @@ export default function Page() {
                 <div className="w-full md:w-3/4">
                   {data?.fatwas?.length == 0 && (
                     <div className="mt-4">
-                      <DataNotFound search={router.query.q as string} />
+                      <DataNotFound />
                     </div>
                   )}
 
