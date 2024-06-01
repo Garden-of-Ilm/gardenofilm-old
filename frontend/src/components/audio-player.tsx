@@ -112,7 +112,7 @@ export default function AudioPlayer({ url }: { url: string }) {
               {calculateDurationInMinutes(audioRef.current?.currentTime)}
             </span>
             <span className="text-zinc-300"> / </span>
-            <span className="text-zinc-400">
+            <span className="text-[#656565]">
               {calculateDurationInMinutes(audioRef.current?.duration)}
             </span>
           </div>

@@ -12,8 +12,11 @@ import axiosInstance, { baseURL } from "@/lib/axios";
 import Card from "@/components/card";
 import Navbar from "@/components/navbar";
 import HomeCard from "@/components/home-card";
+import { Badge } from "@/components/ui/badge";
 
 const rubik = Rubik({ subsets: ["latin"] });
+
+const featuredFatwaCategories = ["Purification", "Prayer", "Zakah", "Hajj"];
 
 export default function Page() {
   const router = useRouter();
@@ -70,30 +73,16 @@ export default function Page() {
               Featured Fatwa Categories
             </div>
             <div className="mt-2.5 flex flex-wrap gap-2.5">
-              <div
-                className="rounded-3xl border border border-slate-400 bg-slate-100 px-3.5 py-1.5 text-slate-700 hover:cursor-pointer hover:bg-slate-200"
-                onClick={() => router.push(`/fatwas?category=Purification`)}
-              >
-                Purification
-              </div>
-              <div
-                className="rounded-3xl border border border-slate-400 bg-slate-100 px-3.5 py-1.5 text-slate-700 hover:cursor-pointer hover:bg-slate-200"
-                onClick={() => router.push(`/fatwas?category=Prayer`)}
-              >
-                Prayer
-              </div>
-              <div
-                className="rounded-3xl border border border-slate-400 bg-slate-100 px-3.5 py-1.5 text-slate-700 hover:cursor-pointer hover:bg-slate-200"
-                onClick={() => router.push(`/fatwas?category=Zakah`)}
-              >
-                Zakah
-              </div>
-              <div
-                className="rounded-3xl border border border-slate-400 bg-slate-100 px-3.5 py-1.5 text-slate-700 hover:cursor-pointer hover:bg-slate-200"
-                onClick={() => router.push(`/fatwas?category=Hajj`)}
-              >
-                Hajj
-              </div>
+              {featuredFatwaCategories.map((category) => (
+                <Badge
+                  key={category}
+                  variant="outline"
+                  onClick={() => router.push(`/fatwas?category=${category}`)}
+                  className="cursor-pointer border-slate-400 bg-white px-3.5 py-1.5 text-base font-normal hover:bg-slate-100"
+                >
+                  {category}
+                </Badge>
+              ))}
             </div>
           </div>
 

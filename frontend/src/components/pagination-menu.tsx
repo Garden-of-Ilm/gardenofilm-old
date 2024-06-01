@@ -1,5 +1,16 @@
 import { useRouter } from "next/router";
 
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import clsx from "clsx";
+
 interface Props {
   subdirectory: string;
   total: number;
@@ -18,27 +29,15 @@ export default function PaginationMenu({
   const router = useRouter();
 
   return (
-    <div className="mx-auto flex w-fit items-center rounded">
-      <div className="text-center md:w-[250px]">
-        <p className="text-sm text-gray-600">
-          Showing{" "}
-          <span className="font-medium text-black">
-            {(page - 1) * perPage + 1}
-          </span>{" "}
-          to{" "}
-          <span className="font-medium text-black">
-            {Math.min(page * perPage, total)}
-          </span>{" "}
-          of <span className="font-medium text-black">{total}</span> results
-        </p>
-      </div>
-      <div className="flex items-center justify-center px-4 py-3 sm:px-6">
-        <div className="flex flex-1 justify-between">
-          <button
-            className="relative inline-flex items-center rounded-lg border border-gray-400 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:bg-gray-50 disabled:border-gray-400 disabled:text-gray-400"
-            disabled={page == 1}
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            className="cursor-pointer select-none hover:bg-slate-200"
             onClick={() => {
-              // router.push(`/fatwas?page=${page - 1}`);
+              if (page == 1) {
+                return;
+              }
               const params = new URLSearchParams(window.location.search);
               const currentPage = parseInt(params.get("page") || "1");
               const nextPage = currentPage - 1;
@@ -46,13 +45,60 @@ export default function PaginationMenu({
               const newQueryString = params.toString();
               router.push(`/${subdirectory}?${newQueryString}`);
             }}
-          >
-            Previous
-          </button>
-          <button
-            className="relative ml-3 inline-flex items-center rounded-lg border border-gray-400 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 hover:bg-gray-50 disabled:border-gray-400 disabled:text-gray-400"
-            disabled={page == pages}
+          />
+        </PaginationItem>
+        {Array.from({ length: pages }, (_, i) => i + 1).map((pageNumber) => {
+          const offset = Math.abs(pageNumber - page);
+          if (pageNumber == 1 || offset <= 1 || pageNumber == pages) {
+            return (
+              <>
+                {pageNumber == pages && offset > 2 ? (
+                  <PaginationItem>
+                    <PaginationEllipsis />
+                  </PaginationItem>
+                ) : (
+                  <></>
+                )}
+                <PaginationItem key={pageNumber}>
+                  <PaginationLink
+                    className={clsx(
+                      "cursor-pointer select-none hover:bg-slate-200",
+                      {
+                        "border-slate-400": pageNumber == page,
+                      },
+                    )}
+                    isActive={pageNumber == page}
+                    onClick={() => {
+                      const params = new URLSearchParams(
+                        window.location.search,
+                      );
+                      params.set("page", pageNumber.toString());
+                      const newQueryString = params.toString();
+                      router.push(`/${subdirectory}?${newQueryString}`);
+                    }}
+                  >
+                    {pageNumber}
+                  </PaginationLink>
+                </PaginationItem>
+
+                {pageNumber == 1 && offset > 2 ? (
+                  <PaginationItem>
+                    <PaginationEllipsis />
+                  </PaginationItem>
+                ) : (
+                  <></>
+                )}
+              </>
+            );
+          }
+        })}
+        <PaginationItem>
+          <PaginationNext
+            className="cursor-pointer select-none hover:bg-slate-200"
             onClick={() => {
+              if (page == pages) {
+                return;
+              }
               const params = new URLSearchParams(window.location.search);
               // const currentPage = parseInt(params.get("page") || "1");
               const nextPage = parseInt(String(page)) + 1;
@@ -60,11 +106,9 @@ export default function PaginationMenu({
               const newQueryString = params.toString();
               router.push(`/${subdirectory}?${newQueryString}`);
             }}
-          >
-            Next
-          </button>
-        </div>
-      </div>
-    </div>
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
   );
 }

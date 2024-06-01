@@ -154,7 +154,7 @@ export default function Page() {
                     ))}
                   </div>
 
-                  <div className="mx-[16px] my-6 md:mx-[72px] md:w-3/4">
+                  <div className="mx-[16px] mb-12 mt-8 md:mx-[72px] md:w-3/4">
                     {data?.benefits?.length !== 0 && (
                       <PaginationMenu
                         subdirectory="benefits"
