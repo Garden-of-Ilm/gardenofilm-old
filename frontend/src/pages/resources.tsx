@@ -44,11 +44,10 @@ export default function Page() {
         </div>
       </div>
 
+      {isPending && (
+        <div className="mt-3 px-[16px] md:px-[72px]">Loading...</div>
+      )}
       <div className="mx-auto bg-slate-50">
-        {isPending && (
-          <div className="mt-3 px-[16px] md:px-[72px]">Loading...</div>
-        )}
-
         {error && (
           <div className="mt-3 px-[16px] md:px-[72px]">{error.message}</div>
         )}
