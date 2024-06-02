@@ -15,8 +15,17 @@ import AdminLayout from "@/components/admin-layout";
 import Modal from "@/components/modal";
 import PaginationMenu from "@/components/pagination-menu";
 
-import MagnifyingGlassIcon from "@/icons/magnifying-glass";
-import PlusIcon from "@/icons/plus";
+import { Plus, Search } from "lucide-react";
+
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 export default function Page() {
   const router = useRouter();
@@ -55,7 +64,7 @@ export default function Page() {
     queryKey: ["fatwas", page, q],
     queryFn: async () => {
       const response = await fetch(
-        baseURL + `/fatwas?limit=9&page=${page}&q=${q}`,
+        baseURL + `/fatwas?limit=7&page=${page}&q=${q}`,
       );
       return response.json();
     },
@@ -81,7 +90,7 @@ export default function Page() {
         </div>
         <div>
           <Button onClick={() => router.push("./fatwas/create")}>
-            <PlusIcon className={"mr-1 h-4 w-4"} /> Upload Fatwa
+            <Plus className={"mr-1 h-4 w-4"} /> Upload Fatwa
           </Button>
         </div>
       </div>
@@ -97,75 +106,72 @@ export default function Page() {
             onChange={(e) => handleSearch(e.target.value)}
             defaultValue={searchParams.get("q")?.toString()}
           />
-          <MagnifyingGlassIcon className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transform text-[#a8afb9]" />
+          <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 transform text-[#a8afb9]" />
         </div>
       </form>
       {isPending && "Loading..."}
       {!isPending && (
-        <div className="px-4">
-          <div className="h-[400px]">
-            <table className="w-full">
-              <thead className="border-b border-slate-400 font-normal">
-                <tr className="text-sm font-normal text-neutral-500">
-                  <th className="w-[40%] text-left">Title</th>
-                  <th className="w-[12%] text-left">Author</th>
-                  <th className="w-[10%] text-left">Uploaded</th>
-                  <th className="w-[8%] text-left">Category</th>
-                  <th className="text-left">Views</th>
-                  <th className=""></th>
-                  <th className=""></th>
-                  <th className=""></th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-300 border-b border-slate-300">
-                {data.fatwas.map((f: Fatwa, index: number) => {
-                  return (
-                    <tr key={index} className="h-[40px] text-xs">
-                      <td className="pr-4 text-left">{f.title}</td>
-                      <td className="text-left">{f.author}</td>
-                      <td className="text-left">{formatDate(f.createdAt)}</td>
-                      <td className="text-left">{f.category || "-"}</td>
-                      <td className="text-left">{f.views}</td>
-                      <td>
-                        <Link
-                          href={`/fatwas/${f._id}`}
-                          target="_blank"
-                          className="inline-flex items-center rounded-md bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                        >
+        <>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Name</TableHead>
+                <TableHead>Author</TableHead>
+                <TableHead>Uploaded</TableHead>
+                <TableHead>Category</TableHead>
+                <TableHead>Views</TableHead>
+                <TableHead className="text-right"></TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {data?.fatwas.map((f: Fatwa, index: number) => {
+                return (
+                  <TableRow key={index}>
+                    <TableCell className="py-1">{f.title}</TableCell>
+                    <TableCell className="py-1">{f.author}</TableCell>
+                    <TableCell className="py-1">
+                      {formatDate(f.createdAt)}
+                    </TableCell>
+                    <TableCell className="py-1">{f.category || "-"}</TableCell>
+                    <TableCell className="py-1">{f.views}</TableCell>
+                    <TableCell className="flex justify-end space-x-2.5 py-1">
+                      <Button
+                        variant="outline"
+                        className="border-slate-400"
+                        asChild
+                      >
+                        <Link href={`/fatwas/${f._id}`} target="_blank">
                           View
                         </Link>
-                      </td>
-                      <td>
-                        <Link
-                          href={`./fatwas/${f._id}/edit`}
-                          className="inline-flex items-center rounded-md bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                        >
-                          Edit
-                        </Link>
-                      </td>
-                      <td>
-                        <button
-                          type="button"
-                          className="inline-flex items-center rounded-md bg-white px-3 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                          onClick={() => openDeleteModal(f._id)}
-                        >
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className="border-slate-400"
+                        asChild
+                      >
+                        <Link href={`./fatwas/${f._id}/edit`}>Edit</Link>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className="border-slate-400"
+                        onClick={() => openDeleteModal(f._id)}
+                      >
+                        Delete
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
           <PaginationMenu
             subdirectory="admin/fatwas"
-            page={data.paging.page}
-            perPage={data.paging.perPage}
-            pages={data.paging.pages}
-            total={data.paging.total}
+            page={data?.paging.page}
+            perPage={data?.paging.perPage}
+            pages={data?.paging.pages}
+            total={data?.paging.total}
           />
-        </div>
+        </>
       )}
       <Modal open={open} setOpen={setOpen}>
         <div className="">

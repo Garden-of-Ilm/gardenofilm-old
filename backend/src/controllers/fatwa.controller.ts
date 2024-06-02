@@ -12,6 +12,8 @@ interface RequestQuery {
   q?: string;
   page?: string;
   category?: string;
+  sort?: string;
+  order?: string;
 }
 
 interface ISearchOptions {
@@ -45,7 +47,14 @@ export class FatwaController {
     res: Response
   ) {
     try {
-      const { q, limit = "20", page = "1", category = "" } = req.query;
+      const {
+        q,
+        limit = "20",
+        page = "1",
+        category = "",
+        sort = "",
+        order = "",
+      } = req.query;
 
       const query: ISearchOptions = {};
 
@@ -71,12 +80,20 @@ export class FatwaController {
           .select("category views title question createdAt author")
           .skip((pageNum - 1) * pageLimit)
           .limit(pageLimit)
-          .sort({ createdAt: -1 });
+          .sort(
+            sort
+              ? { [sort as string]: order == "asc" ? 1 : -1 }
+              : { createdAt: -1 }
+          );
       } else {
         fatwaList = await fatwaModel
           .find(query)
           .select("category views title question createdAt author")
-          .sort({ createdAt: -1 });
+          .sort(
+            sort
+              ? { [sort as string]: order == "asc" ? 1 : -1 }
+              : { createdAt: -1 }
+          );
       }
 
       return res.status(200).json({

@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { formatAudioSize } from "@/lib/utils";
 import { calculateDurationInMinutes } from "@/lib/utils";
-import TrashIcon from "@/icons/trash";
-import CheckCircleIcon from "@/icons/check-circle";
-import ArrowUpCircleIcon from "@/icons/arrow-up-circle";
+import { CircleArrowUp, CircleCheck, Trash2 } from "lucide-react";
 
 interface FileType extends File {
   url?: string;
@@ -72,9 +70,9 @@ export default function AudioCard({
             </span>
             <p>
               {isLoading ? (
-                <ArrowUpCircleIcon className="h-5 w-5" />
+                <CircleArrowUp className="h-5 w-5" />
               ) : (
-                <CheckCircleIcon className="h-5 w-5 text-green-600" />
+                <CircleCheck className="h-5 w-5 text-green-600" />
               )}
             </p>
             {!audio?.url && (
@@ -89,7 +87,7 @@ export default function AudioCard({
             className="flex h-[32px] w-[32px] items-center justify-center rounded-2xl bg-white"
             onClick={() => handleRemoveAudio()}
           >
-            <TrashIcon className="h-5 w-5 text-red-500" />
+            <Trash2 className="h-5 w-5 text-red-500" />
           </button>
         )}
       </div>

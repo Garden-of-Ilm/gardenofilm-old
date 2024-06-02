@@ -21,7 +21,7 @@ export default function LogoutModalButton() {
       <AlertDialogTrigger asChild>
         <Button
           className="text-md h-12 w-full rounded-none border-0 border-t border-slate-300 font-normal"
-          variant="outline"
+          variant="secondary"
         >
           Sign out
         </Button>

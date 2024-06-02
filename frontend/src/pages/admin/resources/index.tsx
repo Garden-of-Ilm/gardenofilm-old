@@ -1,7 +1,7 @@
 import AdminLayout from "@/components/admin-layout";
 import Modal from "@/components/modal";
 import { Button } from "@/components/ui/button";
-import PlusIcon from "@/icons/plus";
+import { Plus } from "lucide-react";
 import axiosInstance, { baseURL } from "@/lib/axios";
 import { Resource } from "@/lib/definitions";
 import { convertGoogleDriveLinkToDownloadLink, formatDate } from "@/lib/utils";
@@ -60,7 +60,7 @@ export default function Page() {
         </div>
         <div>
           <Button onClick={() => router.push("./resources/create")}>
-            <PlusIcon className={"mr-1 h-4 w-4"} /> Upload Resource
+            <Plus className={"mr-1 h-4 w-4"} /> Upload Resource
           </Button>
         </div>
       </div>

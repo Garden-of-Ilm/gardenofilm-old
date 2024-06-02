@@ -5,6 +5,18 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function toKebabCase(input: string): string {
+  const filteredString = input
+    .replace(/[^\p{L}\p{N}\s,-]/gu, "")
+    .toLowerCase()
+    .replace(",", "");
+
+  return filteredString
+    .replace(/([^\p{L}a-z])([^\p{L}a-z])/gu, "$1-$2")
+    .replace(/\s+/g, "-")
+    .toLowerCase();
+}
+
 export function formatDate(dateString?: string) {
   if (!dateString) return "";
   const dateObject = new Date(dateString);

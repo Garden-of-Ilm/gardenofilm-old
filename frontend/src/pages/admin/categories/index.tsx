@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import Modal from "@/components/modal";
 import { useQuery } from "@tanstack/react-query";
-import PlusIcon from "@/icons/plus";
+import { Plus } from "lucide-react";
 import AdminLayout from "@/components/admin-layout";
 import { formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -64,7 +64,7 @@ export default function Page() {
         </div>
         <div>
           <Button onClick={() => router.push("./categories/create")}>
-            <PlusIcon className={"mr-1 h-4 w-4"} /> New Category
+            <Plus className={"mr-1 h-4 w-4"} /> New Category
           </Button>
         </div>
       </div>

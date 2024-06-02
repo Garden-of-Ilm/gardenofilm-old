@@ -7,6 +7,8 @@ interface RequestQuery {
   category: string;
   page: number;
   limit: number;
+  sort?: string;
+  order?: string;
 }
 
 export class BenefitController {
@@ -15,7 +17,7 @@ export class BenefitController {
     res: Response
   ) {
     try {
-      const { q = "", category = "" } = req.query;
+      const { q = "", category = "", sort = "", order = "" } = req.query;
 
       const page = req.query.page ?? 1;
       const limit = req.query.limit ?? 20;
@@ -37,7 +39,11 @@ export class BenefitController {
       const benefits = await Benefit.find(query)
         .limit(limit)
         .skip((page - 1) * limit)
-        .sort({ createdAt: -1 });
+        .sort(
+          sort
+            ? { [sort as string]: order == "asc" ? 1 : -1 }
+            : { createdAt: -1 }
+        );
 
       return res.status(200).json({
         paging: { total, page, pages, perPage: limit },

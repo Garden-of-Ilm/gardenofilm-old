@@ -6,8 +6,7 @@ import Link from "next/link";
 
 import clsx from "clsx";
 
-import Bars3Icon from "@/icons/bars-3";
-import XMarkIcon from "@/icons/x-mark";
+import { X } from "lucide-react";
 
 import {
   NavigationMenu,
@@ -16,6 +15,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { Menu } from "lucide-react";
 
 const LINKS = [
   {
@@ -58,11 +58,12 @@ export default function Navbar() {
         >
           <div className="w-1/4 text-lg">
             <Image
-              className=""
+              className="cursor-pointer"
               src="/logo.png"
               alt="Garden of Ilm logo"
               width={64}
               height={64}
+              onClick={() => router.push("./")}
             />
           </div>
 
@@ -74,7 +75,7 @@ export default function Navbar() {
                     <Link href={link.path} legacyBehavior passHref>
                       <NavigationMenuLink
                         className={clsx(navigationMenuTriggerStyle(), {
-                          "bg-slate-300/75 hover:bg-slate-300/75 focus:bg-slate-300/75":
+                          "!bg-[#c2d2ce] hover:!bg-[#c2d2ce] focus:!bg-[#c2d2ce]":
                             router.pathname === link?.path,
                         })}
                       >
@@ -87,7 +88,7 @@ export default function Navbar() {
             </NavigationMenu>
           </div>
           <div className="w-1/4 text-end text-xs">
-            <span className="font-medium text-zinc-500">Supervisor:</span>
+            <span className="font-medium text-slate-500/80">Supervisor:</span>
             <br />
             <span className="font-medium opacity-80">Abdulaziz Al-Haqqan</span>
           </div>
@@ -112,7 +113,7 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                   className=""
                 >
-                  <XMarkIcon className="h-12 w-12 px-1 active:rounded active:bg-neutral-200" />
+                  <X className="h-12 w-12 px-1 active:rounded active:bg-neutral-200" />
                 </button>
               </div>
             </div>
@@ -127,24 +128,22 @@ export default function Navbar() {
             />
           </div>
 
-          <div className="flex w-full flex-col items-center justify-center gap-0 divide-y divide-slate-400 border-y border-slate-400 md:flex md:flex-row md:gap-[42px] md:divide-none md:border-0 lg:w-1/2">
+          <div className="flex w-full flex-col justify-center gap-0 divide-y divide-slate-300 border-y border-slate-300 md:flex md:flex-row md:gap-[42px] md:divide-none md:border-0 lg:w-1/2">
             {LINKS.map((link) => (
               <Link
                 href={link.path}
                 key={link.path}
-                className={clsx(
-                  "w-full bg-white px-[24px] py-[20px] text-center font-bold text-[#00000066] hover:text-[#66513e] md:w-fit md:px-0 md:py-0",
-                  {
-                    "text-[#66513e]": router.pathname === link?.path,
-                  },
-                )}
+                className={clsx("w-full px-[26px] py-[20px] text-left", {
+                  "bg-slate-300/75 hover:bg-slate-300/75 focus:bg-slate-300/75":
+                    router.pathname === link?.path,
+                })}
               >
                 {link.label}
               </Link>
             ))}
           </div>
           <div className="mt-6 w-full text-center text-[12.5px]">
-            <span className="font-medium text-zinc-500">Supervisor:</span>
+            <span className="font-medium text-slate-500/80">Supervisor:</span>
             <br />
             <span className="font-medium opacity-80">Abdulaziz Al-Haqqan</span>
           </div>
@@ -157,16 +156,17 @@ export default function Navbar() {
         <div className="flex max-w-7xl items-center justify-between py-2">
           <div className="w-1/4 pl-[16px]">
             <button type="button" onClick={() => setOpen(true)}>
-              <Bars3Icon className="h-11 w-11 px-1 active:rounded active:bg-neutral-200" />
+              <Menu className="h-11 w-11 px-1 active:rounded active:bg-neutral-200" />
             </button>
           </div>
           <div className="w-1/2">
             <Image
-              className="mx-auto"
+              className="mx-auto cursor-pointer"
               src="/logo.png"
               alt="Garden of Ilm logo"
               width={56}
               height={56}
+              onClick={() => router.push("./")}
             />
           </div>
           <div className="w-1/4"></div>

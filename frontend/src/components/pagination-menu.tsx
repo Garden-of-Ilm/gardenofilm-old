@@ -33,7 +33,9 @@ export default function PaginationMenu({
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            className="cursor-pointer select-none hover:bg-slate-200"
+            className={clsx("cursor-pointer select-none hover:bg-slate-200", {
+              "text-slate-400 hover:text-slate-400": page == 1,
+            })}
             onClick={() => {
               if (page == 1) {
                 return;
@@ -53,7 +55,7 @@ export default function PaginationMenu({
             return (
               <>
                 {pageNumber == pages && offset > 2 ? (
-                  <PaginationItem>
+                  <PaginationItem className="hidden md:inline-flex">
                     <PaginationEllipsis />
                   </PaginationItem>
                 ) : (
@@ -62,7 +64,7 @@ export default function PaginationMenu({
                 <PaginationItem key={pageNumber}>
                   <PaginationLink
                     className={clsx(
-                      "cursor-pointer select-none hover:bg-slate-200",
+                      "hidden cursor-pointer select-none hover:bg-slate-200 md:inline-flex",
                       {
                         "border-slate-400": pageNumber == page,
                       },
@@ -82,7 +84,7 @@ export default function PaginationMenu({
                 </PaginationItem>
 
                 {pageNumber == 1 && offset > 2 ? (
-                  <PaginationItem>
+                  <PaginationItem className="hidden md:inline-flex">
                     <PaginationEllipsis />
                   </PaginationItem>
                 ) : (
@@ -94,7 +96,9 @@ export default function PaginationMenu({
         })}
         <PaginationItem>
           <PaginationNext
-            className="cursor-pointer select-none hover:bg-slate-200"
+            className={clsx("cursor-pointer select-none hover:bg-slate-200", {
+              "text-slate-400 hover:text-slate-400": page == pages,
+            })}
             onClick={() => {
               if (page == pages) {
                 return;

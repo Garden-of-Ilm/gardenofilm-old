@@ -9,7 +9,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import LinkIcon from "@/icons/link";
+import { Link2 } from "lucide-react";
 
 export default function ShareButton() {
   const popoverCloseButtonRef = useRef<HTMLButtonElement>(null);
@@ -27,7 +27,7 @@ export default function ShareButton() {
             }, 1000);
           }}
         >
-          <LinkIcon className="mr-1.5 h-4 w-4" /> Share
+          <Link2 className="mr-1.5 h-4 w-4" /> Share
         </Button>
       </PopoverTrigger>
 

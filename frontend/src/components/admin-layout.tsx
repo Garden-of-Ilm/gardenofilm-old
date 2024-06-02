@@ -9,11 +9,11 @@ interface Props {
 export default function AdminLayout({ children }: Props) {
   return (
     <AuthGuard>
-      <div className="flex h-screen w-full">
-        <div className="w-1/6">
+      <div className="flex flex-col md:flex-row">
+        <div className="md:w-1/6">
           <AdminNavbar />
         </div>
-        <div className="w-5/6">{children}</div>
+        <div className="md:w-5/6">{children}</div>
       </div>
     </AuthGuard>
   );

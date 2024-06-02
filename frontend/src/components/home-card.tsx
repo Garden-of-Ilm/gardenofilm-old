@@ -21,26 +21,22 @@ export default function HomeCard({
   return (
     <div
       onClick={onClick}
-      className="flex cursor-pointer flex-col justify-between rounded-lg border border-slate-300/80 bg-white px-[18px] pt-[16px] shadow hover:border-slate-500 hover:shadow-md md:min-h-[150px]"
+      className="flex cursor-pointer flex-col justify-between rounded-lg border border-slate-300/80 bg-white px-[18px] pt-[10px] shadow hover:border-slate-500 hover:shadow-md md:min-h-[150px]"
     >
-      <div className="text-sm font-medium tracking-tight text-[rgba(0_0_0_0.8)]">
+      <div className="flex items-center">
+        <div className="grow text-[13px]">{category}</div>
+        <div className="text-[12px] text-slate-500">
+          {formatDate(createdAt)}
+        </div>
+      </div>
+      <div className="mt-2 min-h-8 text-[13px] font-semibold tracking-tight md:min-h-16">
         {title}
       </div>
-      <div className="mt-[24px] items-center justify-between text-[10px]">
-        <span className="text-md truncate text-[#000000cc]">{author}</span>
-        <div className="text-[#00000080]">{formatDate(createdAt)}</div>
+      <div className="mt-3 items-center justify-between text-[12px]">
+        <span className="text-slate-600">{author}</span>
       </div>
-      <div className="mb-3 mt-2.5 flex w-full items-center">
-        <div className="w-2/3">
-          {category && (
-            <Badge variant="outline" className="border-slate-400/70">
-              {category}
-            </Badge>
-          )}
-        </div>
-        <div className="w-1/3 text-right text-sm text-slate-600">
-          {views} views
-        </div>
+      <div className="mb-3 mt-0.5 text-[12px] text-slate-500/90">
+        {views} views
       </div>
     </div>
   );

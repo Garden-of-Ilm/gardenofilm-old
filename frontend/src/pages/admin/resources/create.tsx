@@ -8,7 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import ChevronLeftIcon from "@/icons/chevron-left";
+import { ChevronLeft } from "lucide-react";
 
 export default function Page() {
   const router = useRouter();
@@ -38,11 +38,11 @@ export default function Page() {
           href={"./"}
           className="flex items-center py-1.5 text-blue-600 hover:text-blue-700"
         >
-          <ChevronLeftIcon className="mr-1 h-4 w-4" />
+          <ChevronLeft className="mr-1 h-4 w-4" />
           Back
         </Link>
       </div>
-      <div className="pb-10 pt-5">
+      <div className="px-4 pb-10 pt-5">
         <form action="post" onSubmit={onSubmit} className="mx-auto max-w-3xl">
           <div className="text-lg font-semibold leading-none tracking-tight">
             Upload new resource

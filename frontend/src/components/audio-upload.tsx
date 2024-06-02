@@ -3,8 +3,8 @@ import AudioCard from "@/components/audio-card";
 import axiosInstance from "@/lib/axios";
 import { useFormContext } from "react-hook-form";
 import { Audio } from "@/lib/definitions";
-import ArrowUpTrayIcon from "@/icons/arrow-up-tray";
 import { Button } from "./ui/button";
+import { Upload } from "lucide-react";
 
 interface Props {
   audios: Audio[] | [];
@@ -105,12 +105,11 @@ function AudioUpload({ audios }: Props) {
         className="text-md mt-8 h-12 rounded-lg"
         onClick={() => fileRef?.current?.click()}
       >
-        <ArrowUpTrayIcon className="mr-2 h-5 w-5" /> Upload file
+        <Upload className="mr-2 h-5 w-5" /> Upload file
       </Button>
 
       {Object.keys(files).map((key, index) => (
         <AudioCard
-          // @ts-ignore
           audio={files[key]}
           loading={loadings[index] ?? false}
           completed={completed[index]}

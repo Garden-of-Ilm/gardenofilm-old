@@ -38,16 +38,16 @@ export default function Page() {
 
       <Navbar />
 
-      <div className="bg-[#e9ded3]">
+      <div className="bg-[#46615d] text-white">
         <div className="mx-auto max-w-7xl px-[32px] py-3 md:px-[72px]">
-          <h2 className="text-xl font-bold">Resources</h2>
+          <h2 className="text-xl font-semibold">Resources</h2>
         </div>
       </div>
 
       {isPending && (
         <div className="mt-3 px-[16px] md:px-[72px]">Loading...</div>
       )}
-      <div className="mx-auto bg-slate-50">
+      <div className="mx-auto">
         {error && (
           <div className="mt-3 px-[16px] md:px-[72px]">{error.message}</div>
         )}

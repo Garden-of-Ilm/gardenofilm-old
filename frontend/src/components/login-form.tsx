@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useAuthContext } from "@/guard/AuthContext";
-import ExclamationTriangleIcon from "@/icons/exclamation-triangle";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import { TriangleAlert } from "lucide-react";
 
 export default function LoginForm() {
   const { login, error } = useAuthContext();
@@ -71,7 +71,7 @@ export default function LoginForm() {
 
       {error && (
         <div className="mt-2 flex items-center justify-center gap-[16px] bg-red-100 p-[12px] font-medium text-red-500">
-          <ExclamationTriangleIcon className="h-6 w-6" />
+          <TriangleAlert className="h-6 w-6" />
           Invalid Password
         </div>
       )}

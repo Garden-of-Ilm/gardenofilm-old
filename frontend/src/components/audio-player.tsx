@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import { Audio } from "@/lib/definitions";
 import { calculateDurationInMinutes } from "@/lib/utils";
 
-import PauseIcon from "@/icons/pause";
-import PlayIcon from "@/icons/play";
+import { Pause, Play } from "lucide-react";
 
 const audioPlaybackRates = [
   {
@@ -98,9 +96,9 @@ export default function AudioPlayer({ url }: { url: string }) {
     <div className="mx-auto mt-[24px] flex max-w-md items-center rounded-xl border border-zinc-300 bg-white px-[12px] py-[14px] shadow">
       <button onClick={handlePlay} type="button" disabled={isLoading}>
         {isPaused ? (
-          <PlayIcon className="h-6 w-6" fillColor="#000" />
+          <Play className="h-6 w-6" fill="#000" stroke="2" />
         ) : (
-          <PauseIcon className="h-6 w-6" strokeWidth={2.25} />
+          <Pause className="h-6 w-6" fill="#000" stroke="2" />
         )}
       </button>
 

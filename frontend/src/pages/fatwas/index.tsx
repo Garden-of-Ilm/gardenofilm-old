@@ -3,21 +3,24 @@ import { FormEvent } from "react";
 import { useRouter } from "next/router";
 import { useSearchParams } from "next/navigation";
 import Head from "next/head";
-import Link from "next/link";
 
 import { useQuery } from "@tanstack/react-query";
 
 import axiosInstance, { baseURL } from "@/lib/axios";
-import { Category, Fatwa } from "@/lib/definitions";
+import { Fatwa } from "@/lib/definitions";
+
+import { Comfortaa } from "next/font/google";
 
 import Card from "@/components/card";
 import DataNotFound from "@/components/data-not-found";
 import Navbar from "@/components/navbar";
 import PaginationMenu from "@/components/pagination-menu";
 
-import MagnifyingGlassIcon from "@/icons/magnifying-glass";
-import clsx from "clsx";
 import CategoriesMenu from "@/components/categories-menu";
+import { Search } from "lucide-react";
+import { toKebabCase } from "@/lib/utils";
+
+const comfortaa = Comfortaa({ subsets: ["latin"] });
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -70,13 +73,13 @@ export default function Page() {
         <meta name="description" content="" />
       </Head>
       <Navbar />
-      <div className="bg-[#e9ded3]">
+      <div className="bg-[#46615d] text-white">
         <div className="mx-auto max-w-7xl px-[32px] py-3 md:px-[72px]">
-          <h2 className="text-xl font-bold">Fatwas</h2>
+          <h2 className={`text-xl font-semibold`}>Fatwas</h2>
         </div>
       </div>
 
-      <div className="min-h-[800px] bg-slate-50">
+      <div className="min-h-[800px]">
         <div className="mx-auto max-w-7xl">
           {!isPending && !error && (
             <>
@@ -98,7 +101,7 @@ export default function Page() {
                       type="submit"
                       className="absolute right-2 top-1/2 -translate-y-1/2 transform rounded-3xl px-3 py-1.5"
                     >
-                      <MagnifyingGlassIcon className="h-6 w-6 text-slate-900" />
+                      <Search className="h-6 w-6 text-slate-900" />
                     </button>
                   </div>
                 </form>
@@ -126,11 +129,7 @@ export default function Page() {
 
               <div className="mx-0 mt-6 flex flex-col pb-6 md:mx-[72px] md:flex-row md:space-x-4">
                 <div className="w-full md:w-3/4">
-                  {data?.fatwas?.length == 0 && (
-                    <div className="mt-4">
-                      <DataNotFound />
-                    </div>
-                  )}
+                  {data?.fatwas?.length == 0 && <DataNotFound />}
 
                   <div className="grid grid-cols-1 px-0 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
                     {data?.fatwas?.map((f: Fatwa, index: number) => (
@@ -148,7 +147,9 @@ export default function Page() {
                             .catch((err) => {
                               console.log(err);
                             });
-                          router.push(`/fatwas/${f._id}`);
+                          router.push(
+                            `/fatwas/${f._id}/${toKebabCase(f.title)}`,
+                          );
                         }}
                       />
                     ))}
