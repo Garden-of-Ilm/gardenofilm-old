@@ -41,7 +41,7 @@ export default function Page() {
       <Navbar />
       <div className="border-t border-neutral-300 pb-12 pt-4 md:pb-8 md:pt-0">
         <div className="mx-auto max-w-4xl px-[16px] py-0 md:px-[72px] md:pb-[50px] md:pt-3">
-          <h1 className="mt-[12px] text-[20px] font-semibold text-[#66513E] md:mt-[26px] md:text-[24px]">
+          <h1 className="mt-[12px] text-[20px] font-semibold text-[#465c3e] md:mt-[26px] md:text-[24px]">
             {data.title}
           </h1>
 
@@ -57,11 +57,11 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="mt-[20px] rounded-xl border-4 border-[#dfcebd] bg-[#dfcebd] md:mt-[42px]">
-            <div className="px-2 py-1.5 pb-2 text-sm font-bold uppercase tracking-[3.5px] text-[#836950] md:text-lg">
+          <div className="mt-[20px] rounded-xl border-4 border-[#c7dfbd] bg-[#c7dfbd] md:mt-[42px]">
+            <div className="px-2 py-1.5 pb-2 text-sm font-bold uppercase tracking-[3.5px] text-[#5f7d54] md:text-lg">
               Question
             </div>
-            <h2 className="rounded-b-xl bg-[#fff] px-4 py-3 text-[14px] font-medium leading-[24px] text-[#554434] md:text-[20px] md:leading-[32px]">
+            <h2 className="rounded-b-xl bg-[#fff] px-4 py-3 text-[14px] font-medium leading-[24px] text-[#19372B] md:text-[20px] md:leading-[32px]">
               {data.question}
             </h2>
           </div>
@@ -70,7 +70,7 @@ export default function Page() {
             <AudioPlayer key={audio._id} url={audio.url} />
           ))}
 
-          <div className="mt-[20px] text-sm font-bold uppercase leading-[24px] tracking-[4px] text-[#836950] md:mt-[42px] md:text-[18px]">
+          <div className="mt-[20px] text-sm font-bold uppercase leading-[24px] tracking-[4px] text-[#5f7d54] md:mt-[42px] md:text-[18px]">
             {data.author}
           </div>
 
@@ -80,7 +80,7 @@ export default function Page() {
 
           {data.additionalReferences && (
             <div className="mt-[20px]">
-              <p className="mt-[20px] block text-[18px] font-bold leading-[24px] text-[#836950] md:mt-[32px] md:text-[20px]">
+              <p className="mt-[20px] text-sm font-bold uppercase leading-[24px] tracking-[4px] text-[#5f7d54] md:mt-[42px] md:text-[18px]">
                 Additional references
               </p>
               <div className="mt-[12px] rounded-[12px] border-[1px] border-[#0000004d] bg-white px-[16px] py-[16px] text-[14px] md:px-[24px] md:py-[16px] md:text-[16px]">
