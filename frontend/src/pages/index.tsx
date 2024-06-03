@@ -11,7 +11,6 @@ import axiosInstance, { baseURL } from "@/lib/axios";
 
 import Card from "@/components/card";
 import Navbar from "@/components/navbar";
-import HomeCard from "@/components/home-card";
 import { Badge } from "@/components/ui/badge";
 import { toKebabCase } from "@/lib/utils";
 
@@ -121,13 +120,14 @@ export default function Page() {
                 </div>
                 <div className="mt-2.5 grid grid-cols-1 gap-0 gap-[16px] md:grid-cols-2 md:gap-[10px] lg:grid-cols-4">
                   {data!.mostViewedFatwas.map((f: Fatwa, index: number) => (
-                    <HomeCard
+                    <Card
                       key={index}
                       title={f.title}
                       author={f.author}
                       createdAt={f.createdAt}
                       category={f.category}
                       views={f.views}
+                      variant="2"
                       onClick={async () => {
                         await axiosInstance
                           .patch(`/fatwas/${f._id}/views`)
@@ -148,13 +148,14 @@ export default function Page() {
                 </div>
                 <div className="mt-2.5 grid grid-cols-1 gap-0 gap-[16px] md:grid-cols-2 md:gap-[10px] lg:grid-cols-4">
                   {data!.mostViewedBenefits.map((b: Benefit, index: number) => (
-                    <HomeCard
+                    <Card
                       key={index}
                       title={b.title}
                       author={b.author}
                       createdAt={b.createdAt}
                       category={b.category}
                       views={b.views}
+                      variant="2"
                       onClick={async () => {
                         await axiosInstance
                           .patch(`/benefits/${b._id}/views`)
@@ -177,13 +178,14 @@ export default function Page() {
                 </div>
                 <div className="mt-2.5 grid grid-cols-1 gap-0 gap-[16px] md:grid-cols-2 md:gap-[10px] lg:grid-cols-4">
                   {data!.recentFatwas.map((f: Fatwa, index: number) => (
-                    <HomeCard
+                    <Card
                       key={index}
                       title={f.title}
                       author={f.author}
                       createdAt={f.createdAt}
                       category={f.category}
                       views={f.views}
+                      variant="2"
                       onClick={async () => {
                         await axiosInstance
                           .patch(`/fatwas/${f._id}/views`)
@@ -204,13 +206,14 @@ export default function Page() {
                 </div>
                 <div className="mt-2.5 grid grid-cols-1 gap-0 gap-[16px] md:grid-cols-2 md:gap-[10px] lg:grid-cols-4">
                   {data!.recentBenefits.map((b: Benefit, index: number) => (
-                    <HomeCard
+                    <Card
                       key={index}
                       title={b.title}
                       author={b.author}
                       createdAt={b.createdAt}
                       category={b.category}
                       views={b.views}
+                      variant="2"
                       onClick={async () => {
                         await axiosInstance
                           .patch(`/benefits/${b._id}/views`)
