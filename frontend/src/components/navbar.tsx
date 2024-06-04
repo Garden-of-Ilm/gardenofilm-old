@@ -88,9 +88,11 @@ export default function Navbar() {
             </NavigationMenu>
           </div>
           <div className="w-1/4 text-end text-xs">
-            <span className="font-medium text-slate-500/80">Supervisor:</span>
+            <span className="font-medium text-slate-500/80">Supervisor</span>
             <br />
-            <span className="font-medium opacity-80">Abdulaziz Al-Haqqan</span>
+            <span className="font-semibold opacity-80">
+              Abdulaziz Al-Haqqan
+            </span>
           </div>
         </div>
       </header>
@@ -143,9 +145,11 @@ export default function Navbar() {
             ))}
           </div>
           <div className="mt-6 w-full text-center text-[12.5px]">
-            <span className="font-medium text-slate-500/80">Supervisor:</span>
+            <span className="font-medium text-slate-500/80">Supervisor</span>
             <br />
-            <span className="font-medium opacity-80">Abdulaziz Al-Haqqan</span>
+            <span className="font-semibold opacity-80">
+              Abdulaziz Al-Haqqan
+            </span>
           </div>
           <div
             className="absolute right-[-100%] top-0 z-[-1] block h-[100%] w-[100%] bg-[#090909aa] md:hidden"

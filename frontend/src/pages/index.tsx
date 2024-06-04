@@ -10,9 +10,17 @@ import { Benefit, Fatwa } from "@/lib/definitions";
 import axiosInstance, { baseURL } from "@/lib/axios";
 
 import Card from "@/components/card";
-import Navbar from "@/components/navbar";
-import { Badge } from "@/components/ui/badge";
 import { toKebabCase } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Layout from "@/components/layout";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -52,13 +60,15 @@ export default function Page() {
   });
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Garden of Ilm</title>
-        <meta name="description" content="" />
+        <meta charSet="utf-8" />
+        <meta
+          name="description"
+          content="Garden of Ilm is a platform containing fatwas and benefits from the scholars of Islam."
+        />
       </Head>
-
-      <Navbar />
 
       <div className="bg-[#46615d] text-white">
         <div className="mx-auto flex max-w-7xl items-center px-[32px] py-10 md:px-[72px]">
@@ -71,7 +81,7 @@ export default function Page() {
             >
               السلام عليكم ورحمة الله وبركاته
             </h2>
-            <h2 className="my-3 text-3xl">
+            <h2 className="my-3 text-2xl sm:text-3xl">
               Welcome to <span className="font-bold">Garden of Ilm</span>
             </h2>
             <p className="mt-[9px] leading-7">
@@ -84,7 +94,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="">
+      <div className="bg-[#f9fbfa]">
         <div className="mx-auto max-w-7xl pb-16">
           <div className="mx-[32px] pt-6 md:mx-[72px]">
             <div className="font-medium text-zinc-500">
@@ -92,14 +102,14 @@ export default function Page() {
             </div>
             <div className="mt-2.5 flex flex-wrap gap-2.5">
               {featuredFatwaCategories.map((category) => (
-                <Badge
+                <Button
                   key={category}
                   variant="outline"
                   onClick={() => router.push(`/fatwas?category=${category}`)}
-                  className="cursor-pointer border-slate-400 bg-slate-100 px-3.5 py-1.5 text-base font-normal hover:bg-slate-200"
+                  className="cursor-pointer rounded-3xl border-slate-400 bg-white px-4 py-2 text-base font-normal"
                 >
                   {category}
-                </Badge>
+                </Button>
               ))}
             </div>
           </div>
@@ -118,27 +128,39 @@ export default function Page() {
                 <div className="font-medium text-zinc-500">
                   Most Viewed Fatwas
                 </div>
-                <div className="mt-2.5 grid grid-cols-1 gap-0 gap-[16px] md:grid-cols-2 md:gap-[10px] lg:grid-cols-4">
-                  {data!.mostViewedFatwas.map((f: Fatwa, index: number) => (
-                    <Card
-                      key={index}
-                      title={f.title}
-                      author={f.author}
-                      createdAt={f.createdAt}
-                      category={f.category}
-                      views={f.views}
-                      variant="2"
-                      onClick={async () => {
-                        await axiosInstance
-                          .patch(`/fatwas/${f._id}/views`)
-                          .then(() => {})
-                          .catch((err) => {
-                            console.log(err);
-                          });
-                        router.push(`/fatwas/${f._id}/${toKebabCase(f.title)}`);
-                      }}
-                    />
-                  ))}
+                <div className="mt-2.5">
+                  <Carousel>
+                    <CarouselContent className="">
+                      {data!.mostViewedFatwas.map((f: Fatwa) => (
+                        <CarouselItem
+                          className="md:basis-1/2 lg:basis-1/3"
+                          key={f._id}
+                        >
+                          <Card
+                            title={f.title}
+                            author={f.author}
+                            createdAt={f.createdAt}
+                            category={f.category}
+                            views={f.views}
+                            variant="2"
+                            onClick={async () => {
+                              await axiosInstance
+                                .patch(`/fatwas/${f._id}/views`)
+                                .then(() => {})
+                                .catch((err) => {
+                                  console.log(err);
+                                });
+                              router.push(
+                                `/fatwas/${f._id}/${toKebabCase(f.title)}`,
+                              );
+                            }}
+                          />
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="ml-8 border-slate-500 bg-white" />
+                    <CarouselNext className="mr-8 border-slate-500 bg-white" />
+                  </Carousel>
                 </div>
               </div>
 
@@ -146,29 +168,39 @@ export default function Page() {
                 <div className="font-medium text-zinc-500">
                   Most Viewed Benefits
                 </div>
-                <div className="mt-2.5 grid grid-cols-1 gap-0 gap-[16px] md:grid-cols-2 md:gap-[10px] lg:grid-cols-4">
-                  {data!.mostViewedBenefits.map((b: Benefit, index: number) => (
-                    <Card
-                      key={index}
-                      title={b.title}
-                      author={b.author}
-                      createdAt={b.createdAt}
-                      category={b.category}
-                      views={b.views}
-                      variant="2"
-                      onClick={async () => {
-                        await axiosInstance
-                          .patch(`/benefits/${b._id}/views`)
-                          .then(() => {})
-                          .catch((err) => {
-                            console.log(err);
-                          });
-                        router.push(
-                          `/benefits/${b._id}/${toKebabCase(b.title)}`,
-                        );
-                      }}
-                    />
-                  ))}
+                <div className="mt-2.5">
+                  <Carousel className="">
+                    <CarouselContent className="">
+                      {data!.mostViewedBenefits.map((b: Fatwa) => (
+                        <CarouselItem
+                          className="md:basis-1/2 lg:basis-1/3"
+                          key={b._id}
+                        >
+                          <Card
+                            title={b.title}
+                            author={b.author}
+                            createdAt={b.createdAt}
+                            category={b.category}
+                            views={b.views}
+                            variant="2"
+                            onClick={async () => {
+                              await axiosInstance
+                                .patch(`/benefits/${b._id}/views`)
+                                .then(() => {})
+                                .catch((err) => {
+                                  console.log(err);
+                                });
+                              router.push(
+                                `/benefits/${b._id}/${toKebabCase(b.title)}`,
+                              );
+                            }}
+                          />
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="ml-8 border-slate-500 bg-white" />
+                    <CarouselNext className="mr-8 border-slate-500 bg-white" />
+                  </Carousel>
                 </div>
               </div>
 
@@ -233,6 +265,6 @@ export default function Page() {
           )}
         </div>
       </div>
-    </>
+    </Layout>
   );
 }

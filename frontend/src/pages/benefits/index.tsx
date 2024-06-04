@@ -17,6 +17,7 @@ import PaginationMenu from "@/components/pagination-menu";
 import CategoriesMenu from "@/components/categories-menu";
 import { Search } from "lucide-react";
 import { toKebabCase } from "@/lib/utils";
+import Layout from "@/components/layout";
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -63,23 +64,24 @@ export default function Page() {
   }
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Benefits - Garden of Ilm</title>
+        <meta charSet="utf-8" />
         <meta name="description" content="" />
       </Head>
-      <Navbar />
+
       <div className="bg-[#46615d] text-white">
         <div className="mx-auto max-w-7xl px-[32px] py-3 md:px-[72px]">
           <h2 className="text-xl font-semibold">Benefits</h2>
         </div>
       </div>
 
-      <div className="min-h-[800px]">
+      <div className="min-h-[800px] bg-[#f9fbfa]">
         <div className="mx-auto h-screen max-w-7xl">
           {!isPending && !error && (
             <>
-              <div className="mx-[16px] flex pt-6 md:mx-[72px] md:space-x-4">
+              <div className="mx-[16px] flex pt-8 md:mx-[72px] md:space-x-4 md:pt-6">
                 <form
                   method="get"
                   className="w-full md:w-3/4"
@@ -174,6 +176,6 @@ export default function Page() {
           )}
         </div>
       </div>
-    </>
+    </Layout>
   );
 }

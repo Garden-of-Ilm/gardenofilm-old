@@ -13,6 +13,7 @@ import {
 import AudioPlayer from "@/components/audio-player";
 import Navbar from "@/components/navbar";
 import ShareButton from "@/components/share-button";
+import Layout from "@/components/layout";
 
 export default function Page() {
   const router = useRouter();
@@ -41,18 +42,20 @@ export default function Page() {
   }
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>{data.title} - Garden of Ilm</title>
+        <meta charSet="utf-8" />
         <meta name="description" content={data?.content} />
+        <meta name="keywords" content={data.title} />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
       </Head>
-      <Navbar />
-      <div className="border-t border-neutral-300 pb-12 pt-4 md:pb-8 md:pt-0">
+
+      <div className="border-t border-neutral-300 bg-[#f9fbfa] pb-12 pt-4 md:pb-8 md:pt-0">
         <div className="mx-auto max-w-4xl px-[16px] py-0 md:px-[72px] md:pb-[50px] md:pt-3">
-          <h1 className="mt-[12px] text-[20px] font-semibold text-[#465c3e] md:mt-[26px] md:text-[24px]">
+          <h1 className="mt-[12px] text-[18px] font-semibold text-[#465c3e] md:mt-[26px] md:text-[24px]">
             {data.title}
           </h1>
 
@@ -98,6 +101,6 @@ export default function Page() {
           )}
         </div>
       </div>
-    </>
+    </Layout>
   );
 }

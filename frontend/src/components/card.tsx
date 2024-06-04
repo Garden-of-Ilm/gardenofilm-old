@@ -23,15 +23,22 @@ export default function Card({
   return (
     <div
       onClick={onClick}
-      className={clsx({
-        "cursor-pointer justify-between border border-slate-300/80 bg-white px-[18px] pt-[10px] shadow hover:border-slate-500 hover:shadow-md md:min-h-[150px] md:rounded-lg":
-          variant == "1",
-        "cursor-pointer justify-between rounded-lg border border-slate-300/80 bg-white px-[18px] pt-[10px] shadow hover:border-slate-500 hover:shadow-md md:min-h-[150px]":
-          variant == "2",
-      })}
+      className={clsx(
+        "h-full w-full cursor-pointer select-none justify-between border border-slate-400/65 bg-white px-[18px] pt-[10px] shadow hover:border-slate-500 md:min-h-[150px]",
+        {
+          "md:rounded-lg": variant == "1",
+          "rounded-lg": variant == "2",
+        },
+      )}
     >
       <div className="flex items-center">
-        <div className="grow text-[14px] md:text-[13px]">{category}</div>
+        <div className="grow text-[14px] md:text-[13px]">
+          {category && (
+            <div className="w-fit rounded-3xl border border-slate-400 px-2 py-[2px] text-xs text-black">
+              {category}
+            </div>
+          )}
+        </div>
         <div className="text-[13px] text-slate-500 md:text-[12px]">
           {formatDate(createdAt)}
         </div>

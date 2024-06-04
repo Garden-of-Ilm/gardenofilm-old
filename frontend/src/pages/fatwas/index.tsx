@@ -9,18 +9,14 @@ import { useQuery } from "@tanstack/react-query";
 import axiosInstance, { baseURL } from "@/lib/axios";
 import { Fatwa } from "@/lib/definitions";
 
-import { Comfortaa } from "next/font/google";
-
 import Card from "@/components/card";
 import DataNotFound from "@/components/data-not-found";
-import Navbar from "@/components/navbar";
 import PaginationMenu from "@/components/pagination-menu";
 
 import CategoriesMenu from "@/components/categories-menu";
 import { Search } from "lucide-react";
 import { toKebabCase } from "@/lib/utils";
-
-const comfortaa = Comfortaa({ subsets: ["latin"] });
+import Layout from "@/components/layout";
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -67,23 +63,24 @@ export default function Page() {
   }
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Fatwas - Garden of Ilm</title>
+        <meta charSet="utf-8" />
         <meta name="description" content="" />
       </Head>
-      <Navbar />
+
       <div className="bg-[#46615d] text-white">
         <div className="mx-auto max-w-7xl px-[32px] py-3 md:px-[72px]">
           <h2 className={`text-xl font-semibold`}>Fatwas</h2>
         </div>
       </div>
 
-      <div className="min-h-[800px]">
+      <div className="min-h-[800px] bg-[#f9fbfa]">
         <div className="mx-auto max-w-7xl">
           {!isPending && !error && (
             <>
-              <div className="mx-[16px] flex pt-6 md:mx-[72px] md:space-x-4">
+              <div className="mx-[16px] flex pt-8 md:mx-[72px] md:space-x-4 md:pt-6">
                 <form
                   method="get"
                   className="w-full md:w-3/4"
@@ -178,6 +175,6 @@ export default function Page() {
           )}
         </div>
       </div>
-    </>
+    </Layout>
   );
 }
