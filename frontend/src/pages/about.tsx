@@ -27,9 +27,9 @@ export default function Page() {
           <div className="">
             <p className="mb-2 leading-7">
               Garden of Ilm is a platform containing fatwas and benefits from
-              the scholars of Islam. We follow the Qur&apos;an and the sunnah of
-              Prophet Muhammad (ﷺ) based on the understanding of the Companions,
-              Tabi&apos;in, and Tabi&apos; Al-Tabi&apos;in.
+              the &apos;ulema. We follow the Qur&apos;an and the sunnah of the
+              Messenger of Allah (ﷺ) based on the understanding of the
+              Companions, Tabi&apos;in, and Tabi&apos; Al-Tabi&apos;in.
             </p>
           </div>
 

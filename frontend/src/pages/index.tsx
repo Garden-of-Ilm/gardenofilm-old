@@ -24,7 +24,13 @@ import Layout from "@/components/layout";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
-const featuredFatwaCategories = ["Purification", "Prayer", "Zakah", "Hajj"];
+const featuredFatwaCategories = [
+  "Aqidah",
+  "Purification",
+  "Prayer",
+  "Zakah",
+  "Hajj",
+];
 
 export default function Page() {
   const router = useRouter();
