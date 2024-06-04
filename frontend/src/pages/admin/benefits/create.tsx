@@ -85,17 +85,17 @@ export default function Page() {
                 <SelectGroup>
                   <SelectLabel>Authors</SelectLabel>
                   <SelectItem value="Sheikh Ibn Baz">Sheikh Ibn Baz</SelectItem>
-                  <SelectItem value="Sheikh Ibn Uthaymeen">
-                    Sheikh Ibn Uthaymeen
+                  <SelectItem value="Sheikh Ibn Al-Uthaymeen">
+                    Sheikh Ibn Al-Uthaymeen
                   </SelectItem>
                   <SelectItem value="Sheikh Al-Albani">
                     Sheikh Al-Albani
                   </SelectItem>
-                  <SelectItem value="Sheikh Al-Fawzan">
-                    Sheikh Al-Fawzan
+                  <SelectItem value="Sheikh Saleh Al-Fawzan">
+                    Sheikh Saleh Al-Fawzan
                   </SelectItem>
-                  <SelectItem value="Sheikh Al-Luhaydan">
-                    Sheikh Al-Luhaydan
+                  <SelectItem value="Sheikh Saleh Al-Luhaydan">
+                    Sheikh Saleh Al-Luhaydan
                   </SelectItem>
                 </SelectGroup>
               </SelectContent>
