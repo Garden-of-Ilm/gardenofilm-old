@@ -77,7 +77,7 @@ export default function Page() {
       </div>
 
       <div className="min-h-[800px] bg-[#f9fbfa]">
-        <div className="mx-auto h-screen max-w-7xl">
+        <div className="mx-auto max-w-7xl">
           {!isPending && !error && (
             <>
               <div className="mx-[16px] flex pt-8 md:mx-[72px] md:space-x-4 md:pt-6">
