@@ -48,6 +48,21 @@ export default function Page() {
         <meta charSet="utf-8" />
         <meta name="description" content={data?.content} />
         <meta name="keywords" content={data.title} />
+
+        <meta property="og:title" content={`${data.title} - Garden of Ilm`} />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content={`https://gardenofilm.com/benefits/${id?.[0]}/${id?.[1]}`}
+        />
+        <meta property="og:image" content="/logo.png" />
+
+        <meta name="twitter:card" content="summary" />
+        <meta
+          property="twitter:title"
+          content={`${data.title} - Garden of Ilm`}
+        />
+
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
