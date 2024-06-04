@@ -63,7 +63,7 @@ export default function Navbar() {
               alt="Garden of Ilm logo"
               width={64}
               height={64}
-              onClick={() => router.push("./")}
+              onClick={() => router.push("/")}
             />
           </div>
 
@@ -170,7 +170,7 @@ export default function Navbar() {
               alt="Garden of Ilm logo"
               width={56}
               height={56}
-              onClick={() => router.push("./")}
+              onClick={() => router.push("/")}
             />
           </div>
           <div className="w-1/4"></div>
