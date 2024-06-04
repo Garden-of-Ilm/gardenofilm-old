@@ -156,10 +156,8 @@ export default function Page() {
                                 .catch((err) => {
                                   console.log(err);
                                 });
-                              router.push(
-                                `/fatwas/${f._id}/${toKebabCase(f.title)}`,
-                              );
                             }}
+                            href={`/fatwas/${f._id}/${toKebabCase(f.title)}`}
                           />
                         </CarouselItem>
                       ))}
@@ -196,10 +194,8 @@ export default function Page() {
                                 .catch((err) => {
                                   console.log(err);
                                 });
-                              router.push(
-                                `/benefits/${b._id}/${toKebabCase(b.title)}`,
-                              );
                             }}
+                            href={`/benefits/${b._id}/${toKebabCase(b.title)}`}
                           />
                         </CarouselItem>
                       ))}
@@ -231,8 +227,8 @@ export default function Page() {
                           .catch((err) => {
                             console.log(err);
                           });
-                        router.push(`/fatwas/${f._id}/${toKebabCase(f.title)}`);
                       }}
+                      href={`/fatwas/${f._id}/${toKebabCase(f.title)}`}
                     />
                   ))}
                 </div>
@@ -259,10 +255,8 @@ export default function Page() {
                           .catch((err) => {
                             console.log(err);
                           });
-                        router.push(
-                          `/benefits/${b._id}/${toKebabCase(b.title)}`,
-                        );
                       }}
+                      href={`/benefits/${b._id}/${toKebabCase(b.title)}`}
                     />
                   ))}
                 </div>

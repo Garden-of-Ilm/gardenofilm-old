@@ -144,10 +144,8 @@ export default function Page() {
                             .catch((err) => {
                               console.log(err);
                             });
-                          router.push(
-                            `/fatwas/${f._id}/${toKebabCase(f.title)}`,
-                          );
                         }}
+                        href={`/fatwas/${f._id}/${toKebabCase(f.title)}`}
                       />
                     ))}
                   </div>

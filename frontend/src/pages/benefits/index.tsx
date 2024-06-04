@@ -11,7 +11,6 @@ import { Benefit } from "@/lib/definitions";
 
 import Card from "@/components/card";
 import DataNotFound from "@/components/data-not-found";
-import Navbar from "@/components/navbar";
 import PaginationMenu from "@/components/pagination-menu";
 
 import CategoriesMenu from "@/components/categories-menu";
@@ -145,10 +144,8 @@ export default function Page() {
                             .catch((err) => {
                               console.log(err);
                             });
-                          router.push(
-                            `/benefits/${b._id}/${toKebabCase(b.title)}`,
-                          );
                         }}
+                        href={`/benefits/${b._id}/${toKebabCase(b.title)}`}
                       />
                     ))}
                   </div>
