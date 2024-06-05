@@ -90,7 +90,7 @@ export default function Page() {
                 <div className="px-2 py-1.5 pb-2 text-sm font-bold uppercase tracking-[3.5px] text-[#5f7d54] md:text-lg">
                   Question
                 </div>
-                <h2 className="rounded-b-xl bg-[#fff] px-4 py-3 text-[14px] font-medium leading-[24px] text-[#19372B] md:text-[20px] md:leading-[32px]">
+                <h2 className="rounded-b-xl bg-[#f9fbfa] px-4 py-3 text-[14px] font-medium leading-[24px] text-[#19372B] md:text-[20px] md:leading-[32px]">
                   {data.question}
                 </h2>
               </div>
