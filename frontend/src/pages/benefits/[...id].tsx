@@ -80,7 +80,7 @@ export default function Page() {
 
           {!isPending && !error && (
             <>
-              <h1 className="mt-[12px] text-[18px] font-semibold text-[#465c3e] md:mt-[26px] md:text-[24px]">
+              <h1 className="mt-[12px] text-lg font-semibold text-[#465c3e] md:mt-[26px] md:text-[24px]">
                 {data.title}
               </h1>
 
@@ -96,18 +96,22 @@ export default function Page() {
                 </div>
               </div>
 
-              {data?.audioUrl && (
-                <AudioPlayer
-                  url={convertDropboxLinkToAudioSrcLink(data.audioUrl)}
-                />
-              )}
+              <div className="mt-5">
+                {data?.audioUrl && (
+                  <AudioPlayer
+                    url={convertDropboxLinkToAudioSrcLink(data.audioUrl)}
+                  />
+                )}
+              </div>
 
-              <div className="mt-[20px] text-sm font-bold uppercase leading-[24px] tracking-[4px] text-[#5f7d54] md:mt-[42px] md:text-[18px]">
+              <div className="mt-5 text-sm font-bold uppercase leading-[24px] tracking-[4px] text-[#5f7d54] md:mt-[42px] md:text-[18px]">
                 {data.author}
               </div>
-              <div className="mt-[15px] whitespace-pre-wrap text-[15px] leading-7 md:text-[18px] md:leading-10">
+
+              <div className="mt-[15px] whitespace-pre-wrap text-base leading-7 md:text-lg md:leading-10">
                 {data.content}
               </div>
+
               {data.additionalReferences && (
                 <div className="mt-[20px]">
                   <p className="mt-[20px] text-sm font-bold uppercase leading-[24px] tracking-[4px] text-[#5f7d54] md:mt-[42px] md:text-[18px]">

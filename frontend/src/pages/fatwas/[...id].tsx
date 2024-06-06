@@ -70,7 +70,7 @@ export default function Page() {
 
           {!isPending && !error && (
             <>
-              <h1 className="mt-[12px] text-[18px] font-semibold text-[#465c3e] md:mt-[26px] md:text-[24px]">
+              <h1 className="mt-[12px] text-lg font-semibold text-[#465c3e] md:mt-[26px] md:text-[24px]">
                 {data.title}
               </h1>
 
@@ -86,25 +86,27 @@ export default function Page() {
                 </div>
               </div>
 
-              <div className="mt-[20px] rounded-xl border-4 border-[#c7dfbd] bg-[#c7dfbd] md:mt-[42px]">
+              <div className="mt-5 rounded-xl border-4 border-[#c7dfbd] bg-[#c7dfbd] md:mt-10">
                 <div className="px-2 py-1.5 pb-2 text-sm font-bold uppercase tracking-[3.5px] text-[#5f7d54] md:text-lg">
                   Question
                 </div>
-                <h2 className="rounded-b-xl bg-[#f9fbfa] px-4 py-3 text-[14px] font-medium leading-[24px] text-[#19372B] md:text-[20px] md:leading-[32px]">
+                <h2 className="rounded-b-xl bg-[#f9fbfa] px-4 py-3 text-base font-medium leading-7 text-[#19372B] md:text-xl md:leading-9">
                   {data.question}
                 </h2>
               </div>
 
-              {data?.audios &&
-                data?.audios.map((audio: Audio) => (
-                  <AudioPlayer key={audio._id} url={audio.url} />
-                ))}
+              <div className="mt-5">
+                {data?.audios &&
+                  data?.audios.map((audio: Audio) => (
+                    <AudioPlayer key={audio._id} url={audio.url} />
+                  ))}
+              </div>
 
-              <div className="mt-[20px] text-sm font-bold uppercase leading-[24px] tracking-[4px] text-[#5f7d54] md:mt-[42px] md:text-[18px]">
+              <div className="mt-5 text-sm font-bold uppercase leading-[24px] tracking-[4px] text-[#5f7d54] md:mt-[42px] md:text-[18px]">
                 {data.author}
               </div>
 
-              <div className="mt-[15px] whitespace-pre-wrap text-[15px] leading-7 md:text-[18px] md:leading-10">
+              <div className="mt-[15px] whitespace-pre-wrap text-base leading-7 md:text-lg md:leading-10">
                 {data.reply}
               </div>
 

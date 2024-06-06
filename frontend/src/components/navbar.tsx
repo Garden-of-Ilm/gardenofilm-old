@@ -87,7 +87,7 @@ export default function Navbar() {
               </NavigationMenuList>
             </NavigationMenu>
           </div>
-          <div className="w-1/4 text-end text-xs">
+          <div className="w-1/4 text-center text-xs">
             <span className="font-medium text-slate-500/80">Supervisor</span>
             <br />
             <span className="font-semibold opacity-80">

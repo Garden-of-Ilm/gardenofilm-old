@@ -5,6 +5,18 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export function formatNumber(n: number): string {
+  if (n < 1000) {
+    return n.toString();
+  } else if (n < 1000000) {
+    return (n / 1000).toFixed(1) + "K";
+  } else if (n < 1000000000) {
+    return (n / 1000000).toFixed(1) + "M";
+  } else {
+    return (n / 1000000000).toFixed(1) + "B";
+  }
+}
+
 export function toKebabCase(input: string): string {
   const filteredString = input
     .replace(/[^\p{L}\p{N}\s,-]/gu, "")

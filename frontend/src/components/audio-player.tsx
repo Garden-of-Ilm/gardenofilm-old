@@ -93,7 +93,7 @@ export default function AudioPlayer({ url }: { url: string }) {
   }, []);
 
   return (
-    <div className="mx-auto mt-[24px] flex max-w-md items-center rounded-xl border border-zinc-300 bg-white px-[12px] py-[14px] shadow">
+    <div className="mx-auto flex max-w-md items-center rounded-xl border border-zinc-300 bg-white px-[12px] py-[14px] shadow">
       <button onClick={handlePlay} type="button" disabled={isLoading}>
         {isPaused ? (
           <Play className="h-6 w-6" fill="#000" stroke="2" />

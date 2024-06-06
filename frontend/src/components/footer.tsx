@@ -44,6 +44,19 @@ export default function Footer() {
             />
           </Link>
           <Link
+            href="https://t.me/Gardenofilm22"
+            target="_blank"
+            rel="noopener"
+          >
+            <Image
+              src="/telegram-logo.png"
+              className="h-4 w-auto"
+              height="16"
+              width="32"
+              alt="Telegram logo"
+            />
+          </Link>
+          <Link
             href="https://linktr.ee/gardenofilm"
             target="_blank"
             rel="noopener"

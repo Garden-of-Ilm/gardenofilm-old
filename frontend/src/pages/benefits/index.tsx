@@ -78,6 +78,16 @@ export default function Page() {
 
       <div className="min-h-[800px] bg-[#f9fbfa]">
         <div className="mx-auto max-w-7xl">
+          {isPending && (
+            <div className="mx-[16px] mt-6 md:mx-[72px]">Loading...</div>
+          )}
+
+          {error && (
+            <div className="mx-[16px] mt-6 md:mx-[72px]">
+              {(error as any).message}
+            </div>
+          )}
+
           {!isPending && !error && (
             <>
               <div className="mx-[16px] flex pt-8 md:mx-[72px] md:space-x-4 md:pt-6">
@@ -106,10 +116,6 @@ export default function Page() {
               </div>
 
               <div className="mx-[16px] md:mx-[72px] md:w-3/4">
-                {isPending && <div className="mt-6">Loading...</div>}
-
-                {error && <div className="mt-6">{(error as any).message}</div>}
-
                 {router.query?.q && (
                   <div className="mt-5">
                     Search results for <strong>{router.query.q}</strong>
@@ -162,7 +168,7 @@ export default function Page() {
                     )}
                   </div>
                 </div>
-                <div className="mb-6 mt-6 w-full px-[16px] md:mx-0 md:mb-0 md:mt-0 md:w-1/4">
+                <div className="mb-8 px-4 md:mb-0 md:w-1/4 md:px-0">
                   <CategoriesMenu
                     subdirectory="benefits"
                     categories={data.categories}
