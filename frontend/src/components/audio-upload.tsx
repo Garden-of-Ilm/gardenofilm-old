@@ -102,6 +102,7 @@ function AudioUpload({ audios }: Props) {
       </p>
 
       <Button
+        type="button"
         className="text-md mt-8 h-12 rounded-lg"
         onClick={() => fileRef?.current?.click()}
       >
