@@ -47,7 +47,15 @@ export default function Page() {
         baseURL + `/benefits?limit=4&sort=views&order=desc`,
       );
 
-      if (!response1.ok || !response2.ok) {
+      const response5 = await fetch(baseURL + `/banners`);
+
+      if (
+        !response1.ok ||
+        !response2.ok ||
+        !response3.ok ||
+        !response4.ok ||
+        !response5.ok
+      ) {
         throw new Error("Network response was not ok");
       }
 
@@ -55,12 +63,14 @@ export default function Page() {
       const data2 = await response2.json();
       const data3 = await response3.json();
       const data4 = await response4.json();
+      const data5 = await response5.json();
 
       return {
         recentFatwas: data1.fatwas,
         recentBenefits: data2.benefits,
         mostViewedFatwas: data3.fatwas,
         mostViewedBenefits: data4.benefits,
+        banner: data5[0],
       };
     },
   });
@@ -75,6 +85,12 @@ export default function Page() {
           content="Garden of Ilm is a platform containing fatwas and benefits from the scholars of Islam."
         />
       </Head>
+
+      {data?.banner && (
+        <div className="bg-[#d79d1e] py-2 text-center font-medium text-white">
+          {data?.banner?.message}
+        </div>
+      )}
 
       <div className="bg-[#46615d] text-white">
         <div className="mx-auto flex max-w-7xl items-center px-[32px] py-10 md:px-[72px]">
