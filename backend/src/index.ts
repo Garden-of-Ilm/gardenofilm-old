@@ -10,6 +10,7 @@ import FileRouter from "./routes/file.route";
 import categoryRouter from "./routes/category.route";
 import resourceRouter from "./routes/resource.route";
 import benefitRouter from "./routes/benefit.route";
+import bannerRouter from "./routes/banner.route";
 
 import limiter from "./middlewares/rate-limiter";
 
@@ -38,11 +39,12 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/banners", bannerRouter);
+app.use("/api/v1/benefits", benefitRouter);
+app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/fatwas", FatwaRouter);
 app.use("/api/v1/files", FileRouter);
-app.use("/api/v1/categories", categoryRouter);
 app.use("/api/v1/resources", resourceRouter);
-app.use("/api/v1/benefits", benefitRouter);
 
 function startApp() {
   if (!process.env.MONGO_URL) {

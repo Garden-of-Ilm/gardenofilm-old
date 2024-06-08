@@ -25,6 +25,10 @@ const LINKS = [
     path: "/admin/categories",
     label: "Categories",
   },
+  {
+    path: "/admin/banner",
+    label: "Banner",
+  },
 ];
 
 export default function AdminNavbar() {
@@ -32,7 +36,7 @@ export default function AdminNavbar() {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <>
+    <nav>
       <div className="fixed hidden h-full w-1/6 flex-col border-r border-slate-300 md:flex">
         <div className="py-3">
           <Image
@@ -108,6 +112,6 @@ export default function AdminNavbar() {
           </div>
         </div>
       )}
-    </>
+    </nav>
   );
 }
