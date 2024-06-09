@@ -72,6 +72,7 @@ export default function Page() {
           <TableHeader>
             <TableRow>
               <TableHead>Name</TableHead>
+              <TableHead>File Format</TableHead>
               <TableHead>Uploaded</TableHead>
               <TableHead>Download Link</TableHead>
               <TableHead className="text-right"></TableHead>
@@ -82,6 +83,7 @@ export default function Page() {
               return (
                 <TableRow key={index}>
                   <TableCell className="py-1">{r.name}</TableCell>
+                  <TableCell className="py-1">{r.fileFormat}</TableCell>
                   <TableCell className="py-1">
                     {formatDate(r.createdAt)}
                   </TableCell>

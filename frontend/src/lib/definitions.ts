@@ -52,6 +52,7 @@ export type Benefit = {
 export type Resource = {
   _id: string;
   name: string;
+  fileFormat: string;
   downloadUrl: string;
   createdAt: string;
 };

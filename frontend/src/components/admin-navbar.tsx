@@ -37,7 +37,7 @@ export default function AdminNavbar() {
 
   return (
     <nav>
-      <div className="fixed hidden h-full w-1/6 flex-col border-r border-slate-300 md:flex">
+      <div className="fixed hidden h-full w-1/6 flex-col border-r border-slate-400 md:flex">
         <div className="py-3">
           <Image
             src={"/logo.png"}

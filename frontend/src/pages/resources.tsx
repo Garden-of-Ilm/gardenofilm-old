@@ -13,7 +13,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import Navbar from "@/components/navbar";
 import { convertGoogleDriveLinkToDownloadLink } from "@/lib/utils";
 import Layout from "@/components/layout";
 
@@ -54,12 +53,13 @@ export default function Page() {
 
         {!isPending && !error && (
           <div className="bg-[#f9fbfa]">
-            <div className="mx-auto h-screen max-w-7xl">
-              <div className="mx-[32px] mx-auto h-fit h-screen bg-white pb-10 md:mx-[72px]">
+            <div className="mx-auto min-h-screen max-w-7xl">
+              <div className="mx-[32px] mx-auto min-h-screen bg-white pb-10 md:mx-[72px]">
                 <Table>
                   <TableHeader>
                     <TableRow className="hover:bg-white">
                       <TableHead>Name</TableHead>
+                      <TableHead>File Format</TableHead>
                       <TableHead className="text-right"></TableHead>
                     </TableRow>
                   </TableHeader>
@@ -68,6 +68,7 @@ export default function Page() {
                       return (
                         <TableRow key={index} className="hover:bg-white">
                           <TableCell>{r.name}</TableCell>
+                          <TableCell>{r.fileFormat}</TableCell>
                           <TableCell className="text-right">
                             <a
                               href={convertGoogleDriveLinkToDownloadLink(

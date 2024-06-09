@@ -23,7 +23,8 @@ export default function Page() {
 
   const { isPending, error, data } = useQuery({
     queryKey: ["categories"],
-    queryFn: () => fetch(baseURL + "/categories").then((res) => res.json()),
+    queryFn: () =>
+      fetch(baseURL + "/categories?sort=name").then((res) => res.json()),
   });
 
   const [selected, setSelected] = useState<string | null>(null);

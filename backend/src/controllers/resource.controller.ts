@@ -15,13 +15,13 @@ export class ResourceController {
 
   static async createResource(req: Request, res: Response) {
     try {
-      const { name, downloadUrl } = req.body;
-      const resource = new Resource({ name, downloadUrl });
+      const { name, fileFormat, downloadUrl } = req.body;
+      const resource = new Resource({ name, fileFormat, downloadUrl });
       await resource.save();
-      res.status(201).json(resource);
+      return res.status(201).json(resource);
     } catch (err) {
       console.log(err);
-      res.status(500).json({ message: err.message });
+      return res.status(500).json({ message: err.message });
     }
   }
 

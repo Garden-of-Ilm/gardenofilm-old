@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { IUser } from "../models/user.model";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "fatwa";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 interface AuthRequest extends Request {
   userId: string;

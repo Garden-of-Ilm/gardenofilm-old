@@ -3,6 +3,7 @@ import { model, Schema } from "mongoose";
 const resourceSchema = new Schema(
   {
     name: String,
+    fileFormat: String,
     downloadUrl: String,
   },
   {

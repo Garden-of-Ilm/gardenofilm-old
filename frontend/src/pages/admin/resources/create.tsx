@@ -10,6 +10,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ChevronLeft } from "lucide-react";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 export default function Page() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
@@ -48,7 +58,9 @@ export default function Page() {
             Upload new resource
           </div>
           <div className="mt-6 grid w-full max-w-md items-center gap-1.5">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="name">
+              Name <span className="font-normal text-zinc-400">(required)</span>
+            </Label>
             <Input
               type="text"
               className="border-slate-400"
@@ -57,13 +69,35 @@ export default function Page() {
               required
             />
           </div>
+          <div className="mt-6 grid w-full max-w-sm items-center gap-1.5">
+            <Label>
+              File Format{" "}
+              <span className="font-normal text-zinc-400">(required)</span>
+            </Label>
+            <Select name="fileFormat" required>
+              <SelectTrigger className="w-[250px] border-slate-400">
+                <SelectValue placeholder="Select a file format" />
+              </SelectTrigger>
+              <SelectContent className="border-slate-300">
+                <SelectGroup>
+                  <SelectLabel>File Formats</SelectLabel>
+                  <SelectItem value="DOCX">DOCX</SelectItem>
+                  <SelectItem value="PDF">PDF</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
           <div className="mt-6 grid w-full max-w-md items-center gap-1.5">
-            <Label htmlFor="downloadUrl">Google Drive Link</Label>
+            <Label htmlFor="downloadUrl">
+              Google Drive Link{" "}
+              <span className="font-normal text-zinc-400">(required)</span>
+            </Label>
             <Input
               type="text"
               className="border-slate-400"
               id="downloadUrl"
               name="downloadUrl"
+              required
             />
           </div>
           <details className="mt-4 max-w-md rounded border border-slate-300 px-3 py-2 text-sm text-slate-500">
