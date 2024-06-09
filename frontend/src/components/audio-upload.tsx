@@ -114,7 +114,6 @@ function AudioUpload({ audios }: Props) {
           audio={files[key]}
           loading={loadings[index] ?? false}
           completed={completed[index]}
-          index={index}
           handleRemoveAudio={() => handleRemoveAudio(files[key])}
           key={index}
         />
