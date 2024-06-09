@@ -110,6 +110,7 @@ export default function Page() {
               className="border-slate-400"
               id="content"
               name="content"
+              rows={10}
               required
             />
           </div>

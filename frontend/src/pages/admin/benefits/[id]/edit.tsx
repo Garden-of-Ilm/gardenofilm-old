@@ -118,6 +118,7 @@ export default function Page() {
               id="content"
               name="content"
               defaultValue={data.content}
+              rows={10}
               required
             />
           </div>

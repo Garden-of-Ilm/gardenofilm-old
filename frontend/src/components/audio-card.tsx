@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { formatAudioSize } from "@/lib/utils";
 import { calculateDurationInMinutes } from "@/lib/utils";
-import { CircleArrowUp, CircleCheck, Trash2 } from "lucide-react";
+import { CircleArrowUp, CircleCheck, CircleMinus } from "lucide-react";
 
 interface FileType extends File {
   url?: string;
@@ -12,14 +12,12 @@ interface Props {
   audio?: FileType;
   completed: number;
   loading: boolean;
-  index: number;
   handleRemoveAudio: Function;
 }
 
 export default function AudioCard({
   audio,
   completed,
-  index,
   loading,
   handleRemoveAudio,
 }: Props) {
@@ -57,16 +55,16 @@ export default function AudioCard({
     audio?.url && !loading ? "100%" : `${progressPercentage}%`;
 
   return (
-    <div className="mt-4 rounded-xl border border-[#dfcebd] bg-[#e9ded3] p-4">
-      <div className="flex justify-between">
+    <div className="mt-4 w-full max-w-sm rounded-xl border border-slate-400 bg-white p-4">
+      <div className="flex justify-between space-x-2">
         <div>
-          <h4 className="max-w-[230px] truncate text-sm font-medium text-[#4e3e2f]">
+          <h4 className="text-sm font-medium">
             {audio?.name ?? audio?.filename}
           </h4>
-          <div className="mt-[8px] flex items-center gap-2.5 text-[12px] text-[#836950]">
+          <div className="mt-[8px] flex items-center gap-2.5 text-[12px] text-gray-500">
             <span>
-              {loading && `${audioSizeOfLoader} of `}
-              {audioSizeReadable} •
+              {loading && `${audioSizeOfLoader} of`}
+              {audioSizeReadable}
             </span>
             <p>
               {isLoading ? (
@@ -84,16 +82,16 @@ export default function AudioCard({
         {!isLoading && (
           <button
             type="button"
-            className="flex h-[32px] w-[32px] items-center justify-center rounded-2xl bg-white"
+            className="flex h-fit w-fit items-center justify-center rounded-3xl border border-red-200 border-white bg-white p-1.5 hover:border-red-300"
             onClick={() => handleRemoveAudio()}
           >
-            <Trash2 className="h-5 w-5 text-red-500" />
+            <CircleMinus className="h-6 w-6 text-red-500" />
           </button>
         )}
       </div>
-      <div className="relative mt-[10px] h-[4px] w-[100%] rounded-[4px] bg-[#f8f4f1]">
+      <div className="relative mt-[10px] h-[4px] w-[100%] rounded-[4px] bg-[#f3f1f8]">
         <div
-          className="h-[4px] w-[40%] rounded-[4px] bg-[#a88766]"
+          className="h-[4px] w-[40%] rounded-[4px] bg-[#6690a8]"
           style={{ width: progressBarWidth }}
         />
       </div>
