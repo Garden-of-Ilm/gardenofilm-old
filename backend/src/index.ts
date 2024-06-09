@@ -1,4 +1,5 @@
 import cors from "cors";
+import compression from "compression";
 import dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
@@ -32,6 +33,7 @@ app.use(
 app.use(express.urlencoded({ extended: true }));
 
 app.use(helmet());
+app.use(compression());
 app.use(limiter);
 
 app.get("/", (req, res) => {
