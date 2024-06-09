@@ -63,7 +63,7 @@ export default function AudioCard({
           </h4>
           <div className="mt-[8px] flex items-center gap-2.5 text-[12px] text-gray-500">
             <span>
-              {loading && `${audioSizeOfLoader} of`}
+              {loading && `${audioSizeOfLoader} of `}
               {audioSizeReadable}
             </span>
             <p>
