@@ -62,7 +62,7 @@ export default function Page() {
 
           <div className="mb-8 mt-8">
             <p>
-              Garden of Ilm is supervised by Sheikh Abu Al-Qamar Abdulaziz
+              Garden of Ilm is supervised by Ustadh Abu Al-Qamar Abdulaziz
               Al-Haqqan (
               <span className={clsx(rubik.className, "text-[14px]")}>
                 حفظه الله
