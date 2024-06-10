@@ -12,6 +12,7 @@ import RHFTextAreaField from "@/components/RHFTextAreaField";
 
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, TriangleAlert } from "lucide-react";
+import { Label } from "@/components/ui/label";
 
 export default function FatwaCreate() {
   const router = useRouter();
@@ -73,60 +74,79 @@ export default function FatwaCreate() {
           <div className="text-lg font-semibold leading-none tracking-tight">
             Upload new fatwa
           </div>
-
           {error && (
             <div className="mt-4 flex w-full items-center justify-center rounded-md bg-red-100 py-3 text-base font-medium uppercase text-rose-600">
               <TriangleAlert className="h-6 w-6" /> {error}
             </div>
           )}
 
-          <RHFTextAreaField
-            className="mt-4 w-full rounded-lg border border-gray-400 p-6"
-            name="author"
-            placeholder="Author"
-          />
-          <RHFTextAreaField
-            className={
-              "mt-4 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-            }
-            name="title"
-            placeholder="Title"
-          />
-          <RHFTextAreaField
-            name="question"
-            className={
-              "mt-4 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-            }
-            placeholder="Question"
-          />
-          <RHFTextAreaField
-            name="reply"
-            className={
-              "mt-4 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-            }
-            placeholder="Reply"
-          />
+          <div className="mt-4">
+            <Label>Author</Label>
+            <RHFTextAreaField
+              className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+              name="author"
+              placeholder="Author"
+            />
+          </div>
 
-          <RHFTextAreaField
-            name="category"
-            className={
-              "mt-4 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-            }
-            placeholder="Category"
-          />
+          <div className="mt-4">
+            <Label>Title</Label>
+            <RHFTextAreaField
+              className={
+                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              }
+              name="title"
+              placeholder="Title"
+            />
+          </div>
 
-          <RHFTextAreaField
-            name="additionalReferences"
-            className={
-              "mt-4 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-            }
-            placeholder="Additional References"
-          />
+          <div className="mt-4">
+            <Label>Question</Label>
+            <RHFTextAreaField
+              name="question"
+              className={
+                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              }
+              placeholder="Question"
+            />
+          </div>
+
+          <div className="mt-4">
+            <Label>Reply</Label>
+            <RHFTextAreaField
+              name="reply"
+              className={
+                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              }
+              placeholder="Reply"
+            />
+          </div>
+
+          <div className="mt-4">
+            <Label>Category</Label>
+            <RHFTextAreaField
+              name="category"
+              className={
+                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              }
+              placeholder="Category"
+            />
+          </div>
+
+          <div className="mt-4">
+            <Label>Additional References</Label>
+            <RHFTextAreaField
+              name="additionalReferences"
+              className={
+                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              }
+              placeholder="Additional References"
+            />
+          </div>
 
           <div className="mt-4">
             <AudioUpload audios={fatwaAudios} />
           </div>
-
           <button type="submit" className="hidden" ref={submitBtnRef} />
           <div className="mt-8">
             <Button
