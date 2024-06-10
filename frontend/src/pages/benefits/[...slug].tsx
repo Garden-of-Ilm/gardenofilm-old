@@ -8,6 +8,7 @@ import {
   convertDropboxLinkToAudioSrcLink,
   formatAdditionalReferences,
   formatDate,
+  toKebabCase,
 } from "@/lib/utils";
 
 import AudioPlayer from "@/components/audio-player";
@@ -17,12 +18,15 @@ import Layout from "@/components/layout";
 export default function Page() {
   const router = useRouter();
 
-  const { id } = router.query;
+  const { slug } = router.query;
+
+  const id = slug?.[0];
+  const title = slug?.[1] ?? "";
 
   const { isPending, error, data } = useQuery({
-    queryKey: [id?.[0]],
+    queryKey: [id],
     queryFn: async () => {
-      const response = await fetch(baseURL + `/benefits/${id?.[0]}`);
+      const response = await fetch(baseURL + `/benefits/${id}`);
       return response.json();
     },
   });
@@ -57,7 +61,9 @@ export default function Page() {
             <meta property="og:type" content="website" />
             <meta
               property="og:url"
-              content={`https://gardenofilm.com/benefits/${id?.[0]}/${id?.[1]}`}
+              content={`https://gardenofilm.com/benefits/${id}/${toKebabCase(
+                title as string,
+              )}`}
             />
             <meta property="og:image" content="/logo.png" />
 
