@@ -86,7 +86,7 @@ export default function Page() {
         />
       </Head>
 
-      {data?.banner && (
+      {data?.banner?.message && (
         <div className="bg-[#d79d1e] py-2 text-center font-medium text-white">
           {data?.banner?.message}
         </div>

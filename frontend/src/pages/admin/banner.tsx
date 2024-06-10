@@ -2,9 +2,13 @@ import AdminLayout from "@/components/admin-layout";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useQuery } from "@tanstack/react-query";
+import axiosInstance from "@/lib/axios";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/router";
 
 export default function Page() {
+  const router = useRouter();
+
   const { isPending, error, data } = useQuery({
     queryKey: ["banner"],
     queryFn: async () => {
@@ -14,12 +18,33 @@ export default function Page() {
       const data = await response.json();
 
       return {
+        id: data?.[0]?._id,
         message: data?.[0]?.message,
       };
     },
   });
 
-  function onSubmit() {}
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (formData: FormData) => {
+      return axiosInstance.put("/banners/" + data?.id, formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    },
+    onSuccess: (data) => {
+      queryClient.setQueryData(["banner"], data);
+      router.reload();
+    },
+  });
+
+  function onSubmit(event: any) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    mutation.mutate(formData);
+  }
 
   if (isPending) {
     return;
@@ -37,7 +62,7 @@ export default function Page() {
         </div>
       </div>
       <div className="px-4 pb-10 pt-5">
-        <form action="post" onSubmit={onSubmit} className="mx-auto max-w-3xl">
+        <form method="put" onSubmit={onSubmit} className="mx-auto max-w-3xl">
           <div className="text-lg font-semibold leading-none tracking-tight">
             Edit banner
           </div>
