@@ -10,7 +10,7 @@ import { Benefit, Fatwa } from "@/lib/definitions";
 import axiosInstance, { baseURL } from "@/lib/axios";
 
 import Card from "@/components/card";
-import { toKebabCase } from "@/lib/utils";
+import { replaceMarkdownLinks, toKebabCase } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 import {
@@ -87,9 +87,12 @@ export default function Page() {
       </Head>
 
       {data?.banner?.message && (
-        <div className="bg-[#d79d1e] py-2 text-center font-medium text-white">
-          {data?.banner?.message}
-        </div>
+        <div
+          className="bg-[#d79d1e] py-2 text-center font-medium text-white"
+          dangerouslySetInnerHTML={{
+            __html: replaceMarkdownLinks(data?.banner?.message),
+          }}
+        ></div>
       )}
 
       <div className="bg-[#46615d] text-white">
