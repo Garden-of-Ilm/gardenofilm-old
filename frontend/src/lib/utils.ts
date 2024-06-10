@@ -41,7 +41,7 @@ export function formatDate(dateString?: string) {
 
 export function replaceMarkdownLinks(input: string): string {
   return input.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
-    return `<a href="${url}" style="text-decoration: underline;">${text}</a>`;
+    return `<a href="${url}" style="text-decoration: underline; font-weight: bold">${text}</a>`;
   });
 }
 
