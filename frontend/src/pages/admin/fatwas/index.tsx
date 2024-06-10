@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 
 import { useRouter } from "next/router";
 import { useSearchParams } from "next/navigation";
@@ -12,15 +12,25 @@ import axiosInstance, { baseURL } from "@/lib/axios";
 
 import { Button } from "@/components/ui/button";
 import AdminLayout from "@/components/admin-layout";
-import Modal from "@/components/modal";
 import PaginationMenu from "@/components/pagination-menu";
 
 import { Plus, Search } from "lucide-react";
 
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
+import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -31,31 +41,20 @@ export default function Page() {
   const router = useRouter();
   const { push } = useRouter();
 
-  const [selected, setSelected] = useState<string | null>(null);
-  const [open, setOpen] = useState(false);
-
-  const openDeleteModal = (id: string) => {
-    setSelected(id);
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setSelected(null);
-    setOpen(false);
-  };
-
-  const handleDelete = async () => {
-    if (!selected) return;
+  function handleDelete(id: string) {
+    if (!id) {
+      return;
+    }
     axiosInstance
-      .delete(`/fatwas/${selected}`)
+      .delete(`/fatwas/${id}`)
       .then(() => {
-        handleClose();
         router.reload();
       })
       .catch((err) => {
         console.log(err);
       });
-  };
+  }
+
   const searchParams = useSearchParams();
   const page = (searchParams.get("page") ?? 1) as number;
   const q = searchParams.get("q") ?? "";
@@ -151,13 +150,41 @@ export default function Page() {
                       >
                         <Link href={`./fatwas/${f._id}/edit`}>Edit</Link>
                       </Button>
-                      <Button
-                        variant="outline"
-                        className="border-slate-400"
-                        onClick={() => openDeleteModal(f._id)}
-                      >
-                        Delete
-                      </Button>
+                      <AlertDialog>
+                        <AlertDialogTrigger>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            className="border-slate-400"
+                          >
+                            Delete
+                          </Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>Delete fatwa</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              <div className="my-2">
+                                Are you sure you want to delete the fatwa{" "}
+                                <span className="text-black">{f.title}</span>
+                              </div>
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogCancel className="border-slate-300">
+                              Cancel
+                            </AlertDialogCancel>
+                            <AlertDialogAction
+                              className="bg-red-500 text-white hover:bg-red-600"
+                              onClick={(e) => {
+                                handleDelete(f._id);
+                              }}
+                            >
+                              Yes, delete
+                            </AlertDialogAction>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
                     </TableCell>
                   </TableRow>
                 );
@@ -173,19 +200,6 @@ export default function Page() {
           />
         </>
       )}
-      <Modal open={open} setOpen={setOpen}>
-        <div className="">
-          <p className="text-center">Do you want to delete this fatwa?</p>
-          <div className="mt-[16px] flex items-center justify-center">
-            <button className="bg-[#DFDCD9]" onClick={handleClose}>
-              Cancel
-            </button>
-            <button className="bg-[#F33] text-white" onClick={handleDelete}>
-              Yes
-            </button>
-          </div>
-        </div>
-      </Modal>
     </AdminLayout>
   );
 }
