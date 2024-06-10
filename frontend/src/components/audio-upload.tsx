@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import AudioCard from "@/components/audio-card";
 import axiosInstance from "@/lib/axios";
-import { useFormContext } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Audio } from "@/lib/definitions";
 import { Button } from "./ui/button";
 import { Upload } from "lucide-react";
@@ -16,7 +16,8 @@ function AudioUpload({ audios }: Props) {
   const [completed, setCompleted] = useState<number[]>([]);
   const [loadings, setLoadings] = useState<boolean[]>([]);
 
-  const { setValue } = useFormContext();
+  const { setValue } = useForm();
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = event.target.files;
     if (selectedFiles && selectedFiles.length > 0) {
