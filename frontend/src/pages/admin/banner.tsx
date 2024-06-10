@@ -74,6 +74,16 @@ export default function Page() {
               name="message"
               defaultValue={data.message}
             />
+            <div className="mt-2 text-sm text-slate-500">
+              To add a link, enclose the link text in brackets and then follow
+              it immediately with the URL in parentheses.
+              <div className="mt-0.5">
+                Example:{" "}
+                <span className="text-slate-900">
+                  [Garden of Ilm](https://gardenofilm.com)
+                </span>
+              </div>
+            </div>
           </div>
           <div className="mt-6">
             <Button type="submit">Save</Button>
