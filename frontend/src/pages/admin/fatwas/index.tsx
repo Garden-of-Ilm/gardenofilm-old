@@ -176,7 +176,7 @@ export default function Page() {
                             </AlertDialogCancel>
                             <AlertDialogAction
                               className="bg-red-500 text-white hover:bg-red-600"
-                              onClick={(e) => {
+                              onClick={() => {
                                 handleDelete(f._id);
                               }}
                             >

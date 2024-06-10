@@ -1,13 +1,23 @@
 import axiosInstance, { baseURL } from "@/lib/axios";
 import { Category } from "@/lib/definitions";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import Modal from "@/components/modal";
 import { useQuery } from "@tanstack/react-query";
 import { Plus } from "lucide-react";
 import AdminLayout from "@/components/admin-layout";
 import { formatDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 import {
   Table,
@@ -27,32 +37,19 @@ export default function Page() {
       fetch(baseURL + "/categories?sort=name").then((res) => res.json()),
   });
 
-  const [selected, setSelected] = useState<string | null>(null);
-  const [open, setOpen] = useState(false);
-
-  const openDeleteModal = (id: string) => {
-    setSelected(id);
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setSelected(null);
-    setOpen(false);
-  };
-
-  const handleDelete = async () => {
-    if (!selected) return;
+  function handleDelete(id: string) {
+    if (!id) {
+      return;
+    }
     axiosInstance
-      .delete(`/categories/${selected}`)
+      .delete(`/categories/${id}`)
       .then(() => {
-        handleClose();
         router.reload();
       })
       .catch((err) => {
         console.log(err);
       });
-  };
-
+  }
   if (isPending) {
     return "Loading...";
   }
@@ -90,14 +87,41 @@ export default function Page() {
                     {formatDate(c.createdAt)}
                   </TableCell>
                   <TableCell className="py-1 text-right">
-                    <Button
-                      type="button"
-                      variant="outline"
-                      className="border-slate-400"
-                      onClick={() => openDeleteModal(c._id)}
-                    >
-                      Delete
-                    </Button>
+                    <AlertDialog>
+                      <AlertDialogTrigger>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className="border-slate-400"
+                        >
+                          Delete
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Delete category</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            <div className="my-2">
+                              Are you sure you want to delete the category{" "}
+                              <span className="text-black">{c.name}</span>
+                            </div>
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel className="border-slate-300">
+                            Cancel
+                          </AlertDialogCancel>
+                          <AlertDialogAction
+                            className="bg-red-500 text-white hover:bg-red-600"
+                            onClick={() => {
+                              handleDelete(c._id);
+                            }}
+                          >
+                            Yes, delete
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
                   </TableCell>
                 </TableRow>
               );
@@ -105,19 +129,6 @@ export default function Page() {
           </TableBody>
         </Table>
       )}
-      <Modal open={open} setOpen={setOpen}>
-        <div className="">
-          <p className="text-center">Do you want to delete this category?</p>
-          <div className="mt-[16px] flex items-center justify-center">
-            <button className="bg-[#DFDCD9]" onClick={handleClose}>
-              Cancel
-            </button>
-            <button className="bg-[#F33] text-white" onClick={handleDelete}>
-              Yes
-            </button>
-          </div>
-        </div>
-      </Modal>
     </AdminLayout>
   );
 }
