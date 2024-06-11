@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import axiosInstance from "@/lib/axios";
 import { useRouter } from "next/router";
 import { Audio, FatwaById } from "@/lib/definitions";
-import FormProvider from "@/components/FormProvider";
+import { FormProvider } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import AdminLayout from "@/components/admin-layout";
 import Link from "next/link";
@@ -105,102 +105,103 @@ export default function Page() {
         </Link>
       </div>
       <div className="pb-10 pt-5">
-        <FormProvider
-          className="mx-auto max-w-3xl px-4"
-          methods={methods}
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <div className="text-lg font-semibold leading-none tracking-tight">
-            Edit fatwa
-          </div>
-
-          {error && (
-            <div className="mt-4 flex w-full items-center justify-center rounded-md bg-red-100 py-3 text-base font-medium uppercase text-rose-600">
-              <TriangleAlert className="h-6 w-6" /> {error}
+        <FormProvider {...methods}>
+          <form
+            className="mx-auto max-w-3xl px-4"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <div className="text-lg font-semibold leading-none tracking-tight">
+              Edit fatwa
             </div>
-          )}
 
-          <div className="mt-4">
-            <Label>Author</Label>
-            <RHFTextAreaField
-              className="mt-1 w-full rounded-lg border border-gray-400 p-6"
-              name="author"
-              placeholder="Author"
-            />
-          </div>
+            {error && (
+              <div className="mt-4 flex w-full items-center justify-center rounded-md bg-red-100 py-3 text-base font-medium uppercase text-rose-600">
+                <TriangleAlert className="h-6 w-6" /> {error}
+              </div>
+            )}
 
-          <div className="mt-4">
-            <Label>Title</Label>
-            <RHFTextAreaField
-              className={
-                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-              }
-              name="title"
-              placeholder="Title"
-            />
-          </div>
+            <div className="mt-4">
+              <Label>Author</Label>
+              <RHFTextAreaField
+                className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                name="author"
+                placeholder="Author"
+              />
+            </div>
 
-          <div className="mt-4">
-            <Label>Question</Label>
-            <RHFTextAreaField
-              name="question"
-              className={
-                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-              }
-              placeholder="Question"
-            />
-          </div>
-
-          <div className="mt-4">
-            <Label>Reply</Label>
-            <RHFTextAreaField
-              name="reply"
-              className={
-                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-              }
-              placeholder="Reply"
-            />
-          </div>
-
-          <div className="mt-4">
-            <Label>Category</Label>
-            <RHFTextAreaField
-              name="category"
-              className={
-                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-              }
-              placeholder="Category"
-            />
-          </div>
-
-          <div className="mt-4">
-            <Label>Additional References</Label>
-            <RHFTextAreaField
-              name="additionalReferences"
-              className={
-                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-              }
-              placeholder="Additional References"
-            />
-          </div>
-
-          <div className="mt-4">
-            <AudioUpload audios={fatwaAudios} />
-          </div>
-
-          <button type="submit" className="hidden" ref={submitBtnRef} />
-          <div className="mt-8">
-            <Button
-              type="button"
-              onClick={() => {
-                if (submitBtnRef?.current) {
-                  submitBtnRef.current.click();
+            <div className="mt-4">
+              <Label>Title</Label>
+              <RHFTextAreaField
+                className={
+                  "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
                 }
-              }}
-            >
-              Save
-            </Button>
-          </div>
+                name="title"
+                placeholder="Title"
+              />
+            </div>
+
+            <div className="mt-4">
+              <Label>Question</Label>
+              <RHFTextAreaField
+                name="question"
+                className={
+                  "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+                }
+                placeholder="Question"
+              />
+            </div>
+
+            <div className="mt-4">
+              <Label>Reply</Label>
+              <RHFTextAreaField
+                name="reply"
+                className={
+                  "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+                }
+                placeholder="Reply"
+              />
+            </div>
+
+            <div className="mt-4">
+              <Label>Category</Label>
+              <RHFTextAreaField
+                name="category"
+                className={
+                  "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+                }
+                placeholder="Category"
+              />
+            </div>
+
+            <div className="mt-4">
+              <Label>Additional References</Label>
+              <RHFTextAreaField
+                name="additionalReferences"
+                className={
+                  "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+                }
+                placeholder="Additional References"
+              />
+            </div>
+
+            <div className="mt-4">
+              <AudioUpload audios={fatwaAudios} />
+            </div>
+
+            <button type="submit" className="hidden" ref={submitBtnRef} />
+            <div className="mt-8">
+              <Button
+                type="button"
+                onClick={() => {
+                  if (submitBtnRef?.current) {
+                    submitBtnRef.current.click();
+                  }
+                }}
+              >
+                Save
+              </Button>
+            </div>
+          </form>
         </FormProvider>
       </div>
     </AdminLayout>
