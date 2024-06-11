@@ -4,10 +4,10 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import axiosInstance from "@/lib/axios";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function Page() {
-  const router = useRouter();
+  const [isUpdated, setIsUpdated] = useState<boolean>(false);
 
   const { isPending, error, data } = useQuery({
     queryKey: ["banner"],
@@ -36,7 +36,7 @@ export default function Page() {
     },
     onSuccess: (data) => {
       queryClient.setQueryData(["banner"], data);
-      router.reload();
+      setIsUpdated(true);
     },
   });
 
@@ -66,6 +66,13 @@ export default function Page() {
           <div className="text-lg font-semibold leading-none tracking-tight">
             Edit banner
           </div>
+
+          {isUpdated && (
+            <div className="mt-6 rounded border border-green-300 bg-green-200 p-2 text-sm text-green-900">
+              Banner message has been updated.
+            </div>
+          )}
+
           <div className="mt-6 grid w-full gap-1.5">
             <Label htmlFor="message">Message</Label>
             <Textarea
