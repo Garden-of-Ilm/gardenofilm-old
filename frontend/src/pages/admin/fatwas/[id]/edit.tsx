@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import axiosInstance from "@/lib/axios";
 import { useRouter } from "next/router";
 import { Audio, FatwaById } from "@/lib/definitions";
-import { FormProvider } from "react-hook-form";
+import { Controller, FormProvider } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import AdminLayout from "@/components/admin-layout";
 import Link from "next/link";
@@ -121,66 +121,80 @@ export default function Page() {
             )}
 
             <div className="mt-4">
-              <Label>Author</Label>
-              <RHFTextAreaField
-                className="mt-1 w-full rounded-lg border border-gray-400 p-6"
-                name="author"
-                placeholder="Author"
+              <Label>Title</Label>
+              <Controller
+                name="title"
+                render={({ field }) => (
+                  <textarea
+                    {...field}
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                  />
+                )}
               />
             </div>
 
             <div className="mt-4">
-              <Label>Title</Label>
-              <RHFTextAreaField
-                className={
-                  "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-                }
-                name="title"
-                placeholder="Title"
+              <Label>Author</Label>
+              <Controller
+                name="author"
+                render={({ field }) => (
+                  <textarea
+                    {...field}
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                  />
+                )}
               />
             </div>
 
             <div className="mt-4">
               <Label>Question</Label>
-              <RHFTextAreaField
+              <Controller
                 name="question"
-                className={
-                  "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-                }
-                placeholder="Question"
+                render={({ field }) => (
+                  <textarea
+                    {...field}
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                  />
+                )}
               />
             </div>
 
             <div className="mt-4">
               <Label>Reply</Label>
-              <RHFTextAreaField
+              <Controller
                 name="reply"
-                className={
-                  "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-                }
-                placeholder="Reply"
+                render={({ field }) => (
+                  <textarea
+                    {...field}
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                  />
+                )}
               />
             </div>
 
             <div className="mt-4">
               <Label>Category</Label>
-              <RHFTextAreaField
+              <Controller
                 name="category"
-                className={
-                  "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-                }
-                placeholder="Category"
+                render={({ field }) => (
+                  <textarea
+                    {...field}
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                  />
+                )}
               />
             </div>
 
             <div className="mt-4">
               <Label>Additional References</Label>
-              <RHFTextAreaField
+              <Controller
                 name="additionalReferences"
-                className={
-                  "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
-                }
-                placeholder="Additional References"
+                render={({ field }) => (
+                  <textarea
+                    {...field}
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                  />
+                )}
               />
             </div>
 
