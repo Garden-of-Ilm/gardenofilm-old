@@ -102,6 +102,7 @@ export default function FatwaCreate() {
                 render={({ field }) => (
                   <textarea
                     {...field}
+                    rows={5}
                     className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
@@ -115,6 +116,7 @@ export default function FatwaCreate() {
                 render={({ field }) => (
                   <textarea
                     {...field}
+                    rows={10}
                     className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}

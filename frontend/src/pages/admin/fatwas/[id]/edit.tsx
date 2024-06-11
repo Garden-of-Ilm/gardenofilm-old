@@ -101,12 +101,9 @@ export default function Page() {
           Back
         </Link>
       </div>
-      <div className="pb-10 pt-5">
+      <div className="px-4 pb-10 pt-5">
         <FormProvider {...methods}>
-          <form
-            className="mx-auto max-w-3xl px-4"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className="mx-auto max-w-3xl" onSubmit={handleSubmit(onSubmit)}>
             <div className="text-lg font-semibold leading-none tracking-tight">
               Edit fatwa
             </div>
@@ -150,6 +147,7 @@ export default function Page() {
                 render={({ field }) => (
                   <textarea
                     {...field}
+                    rows={5}
                     className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
@@ -163,6 +161,7 @@ export default function Page() {
                 render={({ field }) => (
                   <textarea
                     {...field}
+                    rows={10}
                     className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
