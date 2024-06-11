@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import axiosInstance from "@/lib/axios";
 import { useRouter } from "next/router";
 import { Audio } from "@/lib/definitions";
-import { FormProvider } from "react-hook-form";
+import { Controller, FormProvider } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import AdminLayout from "@/components/admin-layout";
 import Link from "next/link";
@@ -82,10 +82,14 @@ export default function FatwaCreate() {
 
             <div className="mt-4">
               <Label>Author</Label>
-              <RHFTextAreaField
-                className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+              <Controller
                 name="author"
-                placeholder="Author"
+                render={({ field }) => (
+                  <textarea
+                    {...field}
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                  />
+                )}
               />
             </div>
 
