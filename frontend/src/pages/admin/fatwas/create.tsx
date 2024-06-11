@@ -57,18 +57,15 @@ export default function FatwaCreate() {
           Back
         </Link>
       </div>
-      <div className="pb-10 pt-5">
+      <div className="px-4 pb-10 pt-5">
         <FormProvider {...methods}>
-          <form
-            className="mx-auto max-w-3xl px-4"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className="mx-auto max-w-3xl" onSubmit={handleSubmit(onSubmit)}>
             <div className="text-lg font-semibold leading-none tracking-tight">
               Upload new fatwa
             </div>
             {error && (
               <div className="mt-4 flex w-full items-center justify-center rounded-md bg-red-100 py-3 text-base font-medium uppercase text-rose-600">
-                <TriangleAlert className="h-6 w-6" /> {error}
+                <TriangleAlert className="mr-1.5 h-6 w-6" /> {error}
               </div>
             )}
 
@@ -79,7 +76,7 @@ export default function FatwaCreate() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />
@@ -92,7 +89,7 @@ export default function FatwaCreate() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />
@@ -105,7 +102,7 @@ export default function FatwaCreate() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />
@@ -118,7 +115,7 @@ export default function FatwaCreate() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />
@@ -131,7 +128,7 @@ export default function FatwaCreate() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />
@@ -144,7 +141,7 @@ export default function FatwaCreate() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />

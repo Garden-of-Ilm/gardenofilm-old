@@ -124,7 +124,7 @@ export default function Page() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />
@@ -137,7 +137,7 @@ export default function Page() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />
@@ -150,7 +150,7 @@ export default function Page() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />
@@ -163,7 +163,7 @@ export default function Page() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />
@@ -176,7 +176,7 @@ export default function Page() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />
@@ -189,7 +189,7 @@ export default function Page() {
                 render={({ field }) => (
                   <textarea
                     {...field}
-                    className="mt-1 w-full rounded-lg border border-gray-400 p-6"
+                    className="mt-1 w-full rounded-lg border border-gray-400 p-3 text-sm"
                   />
                 )}
               />

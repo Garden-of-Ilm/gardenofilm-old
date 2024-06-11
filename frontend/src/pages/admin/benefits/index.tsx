@@ -114,7 +114,7 @@ export default function Page() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Name</TableHead>
+                <TableHead>Title</TableHead>
                 <TableHead>Author</TableHead>
                 <TableHead>Uploaded</TableHead>
                 <TableHead>Category</TableHead>
