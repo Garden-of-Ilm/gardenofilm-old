@@ -88,7 +88,7 @@ export default function Page() {
 
       {data?.banner?.message && (
         <div
-          className="bg-[#d79d1e] py-2 text-center font-medium text-white"
+          className="bg-[#856918] py-2 text-center font-medium text-white"
           dangerouslySetInnerHTML={{
             __html: replaceMarkdownLinks(data?.banner?.message),
           }}
