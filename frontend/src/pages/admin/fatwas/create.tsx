@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import axiosInstance from "@/lib/axios";
 import { useRouter } from "next/router";
 import { Audio } from "@/lib/definitions";
 import FormProvider from "@/components/FormProvider";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import AdminLayout from "@/components/admin-layout";
 import Link from "next/link";
 
 import AudioUpload from "@/components/audio-upload";
+import RHFTextAreaField from "@/components/RHFTextAreaField";
 
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, TriangleAlert } from "lucide-react";
 import { Label } from "@/components/ui/label";
 
-export default function Page() {
+export default function FatwaCreate() {
   const router = useRouter();
 
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   const [fatwaAudios, setFatwaAudios] = useState<Audio[] | []>([]);
   const defaultValues: any = {
     author: "",
@@ -35,6 +37,8 @@ export default function Page() {
     await handleCreate(data);
   };
 
+  const submitBtnRef = useRef<HTMLButtonElement | null>(null);
+
   const handleCreate = async (data: typeof defaultValues) => {
     axiosInstance
       .post("/fatwas", data)
@@ -45,6 +49,10 @@ export default function Page() {
         setError(err?.response?.data?.message ?? "Something went wrong");
       });
   };
+
+  if (loading) {
+    return;
+  }
 
   return (
     <AdminLayout>
@@ -74,89 +82,84 @@ export default function Page() {
 
           <div className="mt-4">
             <Label>Author</Label>
-            <Controller
+            <RHFTextAreaField
+              className="mt-1 w-full rounded-lg border border-gray-400 p-6"
               name="author"
-              render={({ field }) => (
-                <textarea
-                  {...field}
-                  className="mt-1 w-full rounded-lg border border-gray-400 p-6"
-                />
-              )}
+              placeholder="Author"
             />
           </div>
 
           <div className="mt-4">
             <Label>Title</Label>
-            <Controller
+            <RHFTextAreaField
+              className={
+                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              }
               name="title"
-              render={({ field }) => (
-                <textarea
-                  {...field}
-                  className="mt-1 w-full rounded-lg border border-gray-400 p-6"
-                />
-              )}
+              placeholder="Title"
             />
           </div>
 
           <div className="mt-4">
             <Label>Question</Label>
-            <Controller
+            <RHFTextAreaField
               name="question"
-              render={({ field }) => (
-                <textarea
-                  {...field}
-                  className="mt-1 w-full rounded-lg border border-gray-400 p-6"
-                />
-              )}
+              className={
+                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              }
+              placeholder="Question"
             />
           </div>
 
           <div className="mt-4">
             <Label>Reply</Label>
-            <Controller
+            <RHFTextAreaField
               name="reply"
-              render={({ field }) => (
-                <textarea
-                  {...field}
-                  className="mt-1 w-full rounded-lg border border-gray-400 p-6"
-                />
-              )}
+              className={
+                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              }
+              placeholder="Reply"
             />
           </div>
 
           <div className="mt-4">
             <Label>Category</Label>
-            <Controller
+            <RHFTextAreaField
               name="category"
-              render={({ field }) => (
-                <textarea
-                  {...field}
-                  className="mt-1 w-full rounded-lg border border-gray-400 p-6"
-                />
-              )}
+              className={
+                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              }
+              placeholder="Category"
             />
           </div>
 
           <div className="mt-4">
             <Label>Additional References</Label>
-            <Controller
+            <RHFTextAreaField
               name="additionalReferences"
-              render={({ field }) => (
-                <textarea
-                  {...field}
-                  className="mt-1 w-full rounded-lg border border-gray-400 p-6"
-                />
-              )}
+              className={
+                "mt-1 block w-full rounded-lg border border-gray-400 bg-white p-6 text-base text-gray-800 outline-none"
+              }
+              placeholder="Additional References"
             />
           </div>
 
           <div className="mt-4">
             <AudioUpload audios={fatwaAudios} />
           </div>
-
-          <Button className="mt-8" type="submit">
-            Submit
-          </Button>
+          <button type="submit" className="hidden" ref={submitBtnRef} />
+          <div className="mt-8">
+            <Button
+              type="button"
+              onClick={() => {
+                if (submitBtnRef?.current) {
+                  submitBtnRef.current.click();
+                }
+              }}
+            >
+              Submit
+            </Button>
+          </div>
         </FormProvider>
       </div>
     </AdminLayout>
