@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axiosInstance from "@/lib/axios";
 import { useRouter } from "next/router";
 import { Audio, FatwaById } from "@/lib/definitions";
@@ -8,7 +8,6 @@ import AdminLayout from "@/components/admin-layout";
 import Link from "next/link";
 
 import AudioUpload from "@/components/audio-upload";
-import RHFTextAreaField from "@/components/RHFTextAreaField";
 
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, TriangleAlert } from "lucide-react";
@@ -39,8 +38,6 @@ export default function Page() {
   const onSubmit = async (data: typeof defaultValues) => {
     await handleUpdate(data);
   };
-
-  const submitBtnRef = useRef<HTMLButtonElement | null>(null);
 
   const handleUpdate = async (data: typeof defaultValues) => {
     if (!fatwaId) return;
@@ -202,19 +199,9 @@ export default function Page() {
               <AudioUpload audios={fatwaAudios} />
             </div>
 
-            <button type="submit" className="hidden" ref={submitBtnRef} />
-            <div className="mt-8">
-              <Button
-                type="button"
-                onClick={() => {
-                  if (submitBtnRef?.current) {
-                    submitBtnRef.current.click();
-                  }
-                }}
-              >
-                Save
-              </Button>
-            </div>
+            <Button className="mt-8" type="submit">
+              Submit
+            </Button>
           </form>
         </FormProvider>
       </div>
