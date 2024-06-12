@@ -1,0 +1,92 @@
+.audioUploadWrapper {
+  padding: 32px 9px 45px 11px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  max-width: 935px;
+  margin: 33px auto 0 auto;
+  align-items: center;
+}
+
+.audioFileUploadInput {
+  display: none !important;
+}
+
+.audioUploadIcon {
+}
+
+.audioUploadTitle {
+  margin-top: 24px;
+  color: #4e3e2f;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.audioDescription {
+  font-size: 20px;
+  color: #a9acb4;
+  margin-top: 15px;
+}
+
+.audioUploadBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: rgba(13, 6, 0, 0.8);
+  margin-top: 32px;
+  transition: 0.4s ease;
+}
+
+.audioUploadBtn span {
+  background: linear-gradient(90deg, #d79f26 0%, #d6c427 97.87%);
+  font-weight: 700;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 14px;
+}
+
+.audioUploadBtn:hover {
+  opacity: 0.9;
+}
+
+@media screen and (max-width: 768px) {
+  .audioUploadWrapper {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+
+  .audioUploadTitle {
+    font-size: 16px;
+    margin-top: 12px;
+  }
+
+  .audioDescription {
+    font-size: 14px;
+    margin-top: 15px;
+  }
+
+  .audioUploadBtn {
+    background-color: transparent;
+    border: 1px solid #c7a98d;
+  }
+
+  .audioUploadBtn svg path {
+    fill: #4e3e2f;
+  }
+
+  .audioUploadBtn span {
+    font-size: 12px;
+    color: #4e3e2f;
+    background: transparent;
+    background-clip: inherit;
+    -webkit-background-clip: inherit;
+    -webkit-text-fill-color: inherit;
+  }
+}

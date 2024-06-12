@@ -1,0 +1,161 @@
+.fatwaCreateForm {
+  padding: 50px 0;
+}
+
+.mobileFatwaCreateForm {
+  display: none;
+}
+
+.mobileErrorModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileErrorModal p {
+  color: rgba(255, 51, 51, 0.8);
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 24px;
+}
+
+.mobileErrorModal button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: #dfdcd9;
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+.errorAlert {
+  display: flex;
+  width: 100%;
+  max-width: 553px;
+  margin: 0 auto;
+  padding: 12px 11px;
+  background-color: #ffe5e5;
+  gap: 16px;
+  text-transform: capitalize;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #d05f3a;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.fatwaCreateFormDisplay {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.fatwaCreateForm input,
+.fatwaCreateForm textarea {
+  display: block;
+  width: 100%;
+  padding: 24px;
+  margin-top: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background: #fff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1) inset;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 16px;
+  outline: none;
+  resize: none;
+  transition: 0.4s ease;
+}
+
+.fatwaCreateFormQuestionHeadline {
+  min-height: 205px;
+}
+
+.fatwaCreateFormFullQuestion {
+  min-height: 468px;
+}
+
+.fatwaCreateFormDisplayAnswer {
+  min-height: 779px;
+}
+
+.fatwaCreateFormDisplayAddionalPreferience {
+  min-height: 192px;
+}
+
+.fatwaCreateFormDisplay input:focus,
+.fatwaCreateFormDisplay textarea:focus {
+  border-color: rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (max-width: 768px) {
+  .fatwaCreateForm {
+    display: none;
+  }
+
+  .mobileFatwaCreateForm {
+    display: block;
+  }
+
+  .mobileFatwaTabsWrapper {
+    overflow-x: auto;
+    background-color: #fff;
+  }
+
+  .mobileFatwaTabsWrapper::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .mobileFatwaTabs {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    width: max-content;
+    padding: 0 6px;
+  }
+
+  .mobileFatwaTabs p {
+    color: rgba(29, 27, 32, 0.8);
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 14px 8px;
+    position: relative;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  .mobileFatwaTabs p::before {
+    position: absolute;
+    content: "";
+    left: 5%;
+    width: 0%;
+    height: 3px;
+    background-color: #b99470;
+    bottom: 0;
+    transition: 0.3s ease;
+  }
+
+  .mobileFatwaTabs p:hover::before {
+    width: 100%;
+  }
+
+  .activeMobileTab::before {
+    width: 100% !important;
+  }
+
+  .mobileFatwaCreateForm textarea {
+    padding: 16px;
+    min-height: 570px;
+    border: none;
+    width: 100%;
+    outline: none;
+    background-color: transparent;
+    font-size: 12px;
+    color: #000;
+  }
+}

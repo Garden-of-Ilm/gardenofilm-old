@@ -1,0 +1,67 @@
+.audioCardWrapper {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #dfcebd;
+  background: #e9ded3;
+  margin-top: 16px;
+  width: 320px;
+}
+
+.audioCardTopSide {
+  display: flex;
+  justify-content: space-between;
+}
+
+.audioCardTopLeftSide {
+}
+
+.audioCardTopLeftSide h4 {
+  color: #4e3e2f;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.audioCardTopLeftSideInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.audioCardTopLeftSideInfo p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+.audioCardTopLeftSideInfo span {
+  color: #836950;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.audioProgressBar {
+  height: 4px;
+  background: #f8f4f1;
+  width: 100%;
+  border-radius: 4px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.audioProgressBarLine {
+  width: 40%;
+  height: 4px;
+  border-radius: 4px;
+  background: #a88766;
+}
+
+.audioCardTopRightSideDeleteBtn {
+  background-color: #fff;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+}

@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { AuthContext, IUser } from "@/guard/AuthContext";
-import axiosInstance from "@/lib/axios";
-import { LoginRes } from "@/lib/definitions";
+import AdminLoginPage from "@/pages/admin";
+import axiosInstance from "@/api";
+import { LoginRes } from "@/api/login-res";
 import { useRouter } from "next/router";
-import { isTokenExpired } from "@/lib/utils";
+import { isTokenExpired } from "@/guard/JWT.utils";
 
 interface Props {
   children: React.ReactNode;
@@ -15,7 +16,6 @@ function AuthContextProvider({ children }: Props) {
   const router = useRouter();
 
   const login = async (email: string, password: string) => {
-    setErrorMessage(null);
     await axiosInstance
       .post<LoginRes>("/auth/login", { password, email })
       .then((res) => {
@@ -24,10 +24,14 @@ function AuthContextProvider({ children }: Props) {
         localStorage.setItem("user", JSON.stringify(data));
         localStorage.setItem("accessToken", JSON.stringify(accessToken));
         setUser({ ...data, accessToken });
-        router.push("/admin/fatwas");
+        router.push("/admin/fatwa-list");
       })
       .catch((err: any) => {
         setErrorMessage(err?.response?.data?.message ?? "Something went wrong");
+        const timeOutId = setTimeout(() => {
+          setErrorMessage(null);
+          clearTimeout(timeOutId);
+        }, 3000);
       });
   };
 

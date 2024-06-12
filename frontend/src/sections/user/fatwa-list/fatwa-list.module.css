@@ -1,0 +1,123 @@
+.wrapper {
+  padding: 80px 0;
+}
+
+.fatawaListTitle {
+  color: #999694;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+}
+
+.fatawaListWrapper {
+  display: grid;
+  margin-top: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.fatawaCard {
+  padding: 16px 24px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  justify-content: space-between;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  transition: 0.4s ease;
+}
+
+.fatawaCard:hover {
+  transform: scale(1.1);
+}
+
+.fatawaCard p {
+  color: rgba(0, 0, 0, 0.8);
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 151.4%;
+}
+
+.fatawaCardFooter {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fatawaCardFooter span {
+  font-size: 10px;
+  font-weight: 400;
+}
+
+.fatawaCardFooter span:first-child {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.fatawaCardFooter span:last-child {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (max-width: 1200px) {
+  .fatawaListWrapper {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .fatawaListWrapper {
+    margin-top: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 0 0;
+  }
+
+  .wrapper > div {
+    padding: 0 !important;
+  }
+
+  .fatawaListTitle {
+    color: #767472;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: left;
+    padding: 34px 16px 16px 16px;
+  }
+
+  .fatawaListWrapper {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0;
+  }
+
+  .fatawaCard {
+    padding: 16px;
+    border-radius: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    background: #fff;
+  }
+
+  .fatawaCard:hover {
+    transform: scale(1);
+  }
+
+  .fatawaCard p {
+    font-size: 12px;
+    max-width: 95%;
+  }
+
+  .fatawaCardFooter {
+    flex-direction: row-reverse;
+  }
+}

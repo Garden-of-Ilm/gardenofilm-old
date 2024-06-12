@@ -1,0 +1,294 @@
+.aboutUsView {
+}
+
+.aboutUsView * {
+  font-family: "Lexend Deca", sans-serif;
+}
+
+.aboutUsViewHeader {
+  background: linear-gradient(90deg, #d79f26 0%, #d6c427 97.87%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 41px 1rem 33px 1rem;
+  flex-direction: column;
+}
+
+.aboutUsViewHeaderLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aboutUsViewHeaderLogo p {
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.aboutUsViewHeader p {
+  color: #4e3e2f;
+  font-size: 24px;
+  font-weight: 700;
+  max-width: 600px;
+  line-height: 40px;
+  text-align: justify;
+}
+
+.aboutUsViewHeader p span {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+}
+
+.aboutUsViewMain {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 44px 1rem;
+}
+
+.aboutUsViewMain p {
+  color: #66513e;
+  font-size: 20px;
+  text-align: justify;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.aboutUsViewMain span {
+  color: #66513e;
+  text-align: center;
+  font-family: "Lexend Deca";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.aboutUsViewMain hr {
+  height: 1px;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.3);
+  margin-top: 44px;
+}
+
+.aboutUsViewMain h2 {
+  color: #4e3e2f;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 48px;
+  margin-top: 24px;
+}
+
+.aboutUsViewMain > .aboutUsViewMainSubDescription {
+  color: #4e3e2f;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.aboutUsViewMainList {
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.aboutUsViewMainList li {
+  padding: 12px 24px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.aboutUsViewMainList li:nth-child(1) {
+  background: linear-gradient(90deg, #d79f26 0%, #d6c427 97.87%);
+}
+
+.aboutUsViewMainList li:nth-child(2) {
+  background: #dfcebd;
+}
+
+.aboutUsViewMainList li:nth-child(3) {
+  background: rgba(223, 206, 189, 1);
+}
+
+.aboutUsViewFooter {
+  padding: 64px 1rem 96px 1rem;
+  background-color: #e9ded3;
+}
+
+.aboutUsViewFooter > div {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.aboutUsViewFooterInstructor {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-size: 24px;
+  width: 100%;
+  display: block;
+  font-weight: 400;
+  line-height: 40px;
+}
+
+.aboutUsViewFooterAuthor {
+  color: #4e3e2f;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.aboutUsViewFooterSummary {
+  color: #4e3e2f;
+  text-align: justify;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 40px;
+  margin: 0 auto;
+}
+
+.aboutUsViewFooterTeacherList span {
+  color: #4e3e2f;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+.aboutUsViewFooterTeacherList li {
+  list-style-type: disc;
+  margin-left: 30px;
+  color: #4e3e2f;
+  text-align: justify;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.aboutUsViewFooterEndSummary {
+  color: #4e3e2f;
+  text-align: justify;
+  font-size: 20px;
+  margin-top: 20px;
+  line-height: 40px;
+}
+
+.aboutUsViewFooterEndSummary2 {
+  color: #4e3e2f;
+  text-align: justify;
+  font-size: 20px;
+  margin-top: 20px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutUsViewHeader {
+    height: 240px;
+    padding-top: 50px;
+  }
+
+  .aboutUsViewHeader img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .aboutUsViewHeaderLogo {
+    position: absolute;
+    top: 12px;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+
+  .aboutUsViewHeaderLogo p {
+    color: #000;
+  }
+
+  .aboutUsViewHeader p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .aboutUsViewHeader span {
+    font-size: 16px !important;
+  }
+
+  .aboutUsViewMain {
+    padding: 24px 16px;
+  }
+
+  .aboutUsViewMain p {
+    font-size: 12px;
+    line-height: 24px;
+  }
+
+  .aboutUsViewMain span {
+    margin-top: 12px;
+    font-size: 12px;
+  }
+
+  .aboutUsViewMain hr {
+    margin-top: 26px;
+  }
+
+  .aboutUsViewMain h2 {
+    font-size: 16px;
+    color: #000;
+    margin-top: 0;
+  }
+
+  .aboutUsViewMain ul {
+    margin-top: 16px;
+  }
+
+  .aboutUsViewMain ul li {
+    font-size: 12px;
+    color: #000;
+  }
+
+  .aboutUsViewFooter {
+    padding: 1rem;
+  }
+
+  .aboutUsViewFooterInstructor,
+  .aboutUsViewFooterAuthor {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .aboutUsViewFooterAuthor {
+    margin-top: 10px;
+  }
+
+  .aboutUsViewFooter * {
+    font-size: 12px !important;
+    line-height: 24px !important;
+  }
+
+  .aboutUsViewFooterTeacherList {
+    margin-top: 20px;
+  }
+}
+
+/*@media screen and (max-width: 500px) {*/
+/*    .aboutUsViewHeader {*/
+/*        height: 248px;*/
+/*    }*/
+
+/*    .aboutUsViewHeaderLogo {*/
+/*        margin-top: -40px;*/
+/*        margin-bottom: 15px;*/
+/*    }*/
+
+/*    .aboutUsViewHeader p {*/
+/*        font-size: 14px;*/
+/*    }*/
+
+/*    .aboutUsViewHeader span {*/
+/*        font-size: 14px !important;*/
+/*    }*/
+
+/*}*/

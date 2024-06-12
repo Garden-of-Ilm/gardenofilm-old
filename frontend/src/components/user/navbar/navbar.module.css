@@ -1,0 +1,107 @@
+.header {
+  background: #f8f4f1;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  padding: 10px 0;
+}
+
+.header_link {
+  color: rgba(0, 0, 0, 0.4);
+  padding: 14px 0;
+  font-weight: 700;
+  transition: 0.4s ease;
+}
+
+.header > div:first-child img {
+  display: none;
+}
+
+.header_link:hover {
+  color: #66513e;
+}
+
+.active {
+  color: #66513e;
+}
+
+.header > div:last-child {
+  display: none;
+}
+
+.overlay {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    position: absolute;
+    background-color: inherit;
+    box-shadow: inherit;
+    width: 100%;
+    z-index: 104;
+  }
+
+  .overlay {
+    display: block;
+  }
+
+  .header > div:first-child {
+    position: fixed;
+    width: 100%;
+    max-width: 373px;
+    background: #f8f4f1;
+    top: 0;
+    left: -250%;
+    height: 100vh;
+    z-index: 9999;
+    display: block;
+    transition: 0.4s ease;
+  }
+
+  .header > div:first-child > .overlay {
+    position: absolute;
+    width: 100%;
+    right: -100%;
+    height: 100%;
+    background: rgba(187, 184, 181, 0.65);
+    top: 0;
+    z-index: -1;
+  }
+
+  .header > div:first-child p {
+    display: none;
+  }
+
+  .header > div:first-child img {
+    display: block;
+    padding-top: 70px;
+    margin: 0 auto;
+  }
+
+  .headerActive > div:first-child {
+    left: 0;
+  }
+
+  .header > div:first-child > div {
+    flex-direction: column;
+    gap: 13px;
+    margin-top: 23px;
+  }
+
+  .header_link {
+    padding: 12px 24px;
+    width: 95%;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 12px;
+    border-radius: 12px;
+    border: 1px solid #d79f26;
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .header > div:last-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

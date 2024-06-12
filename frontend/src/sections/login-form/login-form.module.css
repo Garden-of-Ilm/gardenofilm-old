@@ -1,0 +1,118 @@
+.login {
+  padding: 65px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.loginForm {
+  padding: 42px 64px;
+  border-radius: 12px;
+  background-color: #e9ded3;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100vw;
+  max-width: 556px;
+}
+
+.loginForm p {
+  color: rgba(0, 0, 0, 0.8);
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 800;
+  margin-bottom: -10px;
+}
+
+.loginForm input {
+  padding: 13px 24px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 12px;
+  max-width: 416px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  transition: 0.4s ease;
+}
+
+.loginForm input:focus {
+  border-color: rgba(0, 0, 0, 0.8);
+}
+
+.loginForm button {
+  border-radius: 12px;
+  max-width: 415px;
+  background: #3a3a3a;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginForm button span {
+  background: linear-gradient(90deg, #d79f26 0%, #d6c427 97.87%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.loginForm button:disabled {
+  opacity: 0.9;
+}
+
+.loginAlert {
+  display: flex;
+  width: 100%;
+  max-width: 553px;
+  padding: 12px 11px;
+  background-color: #ffe5e5;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #d05f3a;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .login {
+    padding: 44px 1rem;
+  }
+
+  .loginForm {
+    padding: 0 1rem;
+    background-color: transparent;
+  }
+
+  .loginForm input,
+  .loginForm button {
+    max-width: 100%;
+    font-size: 12px;
+  }
+
+  .loginForm p {
+    font-size: 12px;
+  }
+
+  .loginForm button {
+    margin-top: 14px;
+  }
+
+  .loginAlert {
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  .loginAlert svg {
+    width: 12px;
+    height: 12px;
+  }
+}

@@ -1,0 +1,13 @@
+.cardLoader {
+  height: 150px;
+  width: 100%;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-between;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: #fff;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+}

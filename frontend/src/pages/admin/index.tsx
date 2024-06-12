@@ -1,10 +1,8 @@
-import { useEffect } from "react";
-
-import { useRouter } from "next/router";
-
+import React, { useEffect } from "react";
+import AuthLayout from "@/layouts/auth-layout";
+import LoginForm from "@/sections/login-form";
 import { useAuthContext } from "@/guard/AuthContext";
-
-import LoginForm from "@/components/login-form";
+import { useRouter } from "next/router";
 
 export default function AdminLoginPage() {
   const { user } = useAuthContext();
@@ -12,13 +10,12 @@ export default function AdminLoginPage() {
 
   useEffect(() => {
     if (user) {
-      push("/admin/fatwas");
+      push("/admin/fatwa-list");
     }
   }, [user]);
-
   return (
-    <div className="flex items-center justify-center pt-0 md:pt-8">
+    <AuthLayout>
       <LoginForm />
-    </div>
+    </AuthLayout>
   );
 }

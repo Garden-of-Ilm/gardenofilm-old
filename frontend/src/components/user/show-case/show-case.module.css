@@ -1,0 +1,158 @@
+.showcase {
+  background-color: #e9ded3;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.title {
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 40px;
+  margin-top: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  font-family: "Lexend Deca", sans-serif;
+}
+
+.description {
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  max-width: 645px;
+  line-height: 33px;
+  margin-top: 18px;
+  position: relative;
+}
+
+.description span {
+  font-weight: 900;
+  transform: translateY(3px);
+  display: inline-block;
+}
+
+.searchContainer {
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.24);
+}
+
+.searchContainer form {
+  display: flex;
+  max-width: 820px;
+  padding: 8px 20px;
+  width: 100vw;
+  justify-content: space-between;
+}
+
+.searchContainer form div {
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+  flex: 0.99;
+  gap: 24px;
+}
+
+.searchContainer form div input {
+  padding: 12px 0;
+  outline: none;
+  border: none;
+  flex: 1;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 20px;
+}
+
+.searchContainer form button {
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: rgba(13, 6, 0, 0.8);
+  color: #fdf39c;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  transition: 0.4s ease;
+}
+
+.searchContainer form button svg {
+  display: none;
+  width: 12px;
+  height: 12px;
+}
+
+.searchContainer form button:hover {
+  opacity: 0.9;
+}
+
+.searchAbsolute {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: -8%;
+}
+
+@media screen and (max-width: 768px) {
+  .showcase img,
+  .showcase h1,
+  .showcase p {
+    display: none;
+  }
+
+  .content {
+    height: 134px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .searchContainer {
+    position: relative;
+    left: 0;
+    transform: translate(0);
+    margin-top: 50px;
+    width: 90vw;
+  }
+
+  .searchContainer form {
+    width: 100% !important;
+    padding: 8px 16px;
+  }
+
+  .searchContainer svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .searchContainer form div {
+    gap: 12px;
+  }
+
+  .searchContainer input {
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+
+  .searchContainer form button span {
+    display: none;
+  }
+
+  .searchContainer form button {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    padding: 0;
+    border-radius: 6px;
+  }
+
+  .searchContainer form button svg {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { User } from "@/lib/definitions";
+import { User } from "@/api/login-res";
 
 export interface IUser extends User {
   accessToken: string;
@@ -15,6 +15,8 @@ export interface IState {
 const initialState: IState = {
   user: {
     _id: "",
+    firstName: "",
+    lastName: "",
     email: "",
     accessToken: "",
   },

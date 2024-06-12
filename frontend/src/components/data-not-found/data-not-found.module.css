@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+  padding: 1rem;
+}
+
+.search p {
+  color: #ab5757;
+  font-size: 24px;
+}
+
+.search span {
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 400;
+  text-align: center;
+  display: block;
+  margin-top: 3px;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper svg {
+    width: 128px;
+    height: 128px;
+  }
+
+  .search p,
+  .search span {
+    font-size: 16px;
+  }
+}
