@@ -41,7 +41,7 @@ export default function Card({
         <div className="flex items-center">
           <div className="grow text-[14px] md:text-[13px]">
             {category && (
-              <div className="w-fit rounded-3xl border border-slate-400 px-2 py-[2px] text-xs text-black">
+              <div className="w-fit rounded-sm bg-[#b9d4cd] px-2 py-0.5 text-xs font-medium text-[#224943]">
                 {category}
               </div>
             )}
