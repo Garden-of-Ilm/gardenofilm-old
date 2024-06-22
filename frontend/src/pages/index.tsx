@@ -82,7 +82,7 @@ export default function Page() {
         <meta charSet="utf-8" />
         <meta
           name="description"
-          content="Garden of Ilm is a platform containing fatwas and benefits from the scholars of Islam."
+          content="Garden of Ilm is a platform containing fatwas and benefits from the Ulema."
         />
       </Head>
 
