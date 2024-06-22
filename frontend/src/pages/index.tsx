@@ -107,7 +107,7 @@ export default function Page() {
               السلام عليكم ورحمة الله وبركاته
             </h2>
             <h2 className="my-3 text-2xl sm:text-3xl">
-              Welcome to <span className="font-bold">Garden of Ilm</span>
+              Welcome to <span className="font-bold">GardenofIlm.com</span>
             </h2>
             <p className="mt-[9px] leading-7">
               Discover and learn fatwas and benefits from Imam Ibn Baz, Ibn
